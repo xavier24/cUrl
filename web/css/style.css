@@ -17,7 +17,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	font-style: inherit;
 	font-size: 100%;
 	font-family: inherit;
-	vertical-align: baseline;
+	vertical-align: top;
 }
 /* remember to define focus styles! */
 :focus {
@@ -50,8 +50,10 @@ blockquote, q {
 /************************************************
 /* FIN RESTE MEYER
 ************************************************/
+
 html{
     background-color: grey;
+    
 }
 body{
     width:600px;
@@ -65,7 +67,7 @@ body{
     
 }
 form{
-    border:3px double #AAA;
+    border:4px double #AAA;
     padding:10px;
     background-color: #CCC;
 }
@@ -79,7 +81,7 @@ label{
     width: 450px;
 }
 #resultat{
-    border:3px double #AAA;
+    border:4px double #211A0A;
     padding:10px;
     background-color: #444;
     margin:10px 0;
@@ -87,40 +89,43 @@ label{
     position: relative;
 }
 #resultat a{
-    color:red;
+    color:#FF9326;
     text-decoration: none;
+    font-weight: bold;
+}
+.texte{
+    display:inline-block;
+    width:280px;
+    margin:0 0 50px 26px;
+}
+.input_texte{
+    display: none;
 }
 #resultat form{
     background-color: #444;
     border:none;
     position: absolute;
-    top:15px;
+    bottom:15px;
     right:15px;
     padding:0;
 }
 #articles{
-    border:3px double #AAA;
-    padding:10px;
+    border:4px double #aaa;
+    padding:8px;
     margin-top:20px;
-    background-color: #DDD;
+    background-color: #ccc;
 }
-#image
+.image
 {
     display: inline-block;
     width: 250px;
 }
-.texte{
-    display:inline-block;
-    width:280px;
-    margin:0 20px 20px;
-}
-.input_texte{
-    display: none;
-}
+
 .article{
-    border:2px solid #AAA;
+    border:1px solid #49412D;
     margin-bottom: 5px;
     padding: 10px 5px;
+    background-color: #AAA;
 }
 h2{
     font-size:1.4em;
@@ -133,7 +138,10 @@ h3{
     margin-bottom: 10px;
 }
 
-
+#suivant{
+    display:inline-block;
+    float: right;
+}
 
 
 

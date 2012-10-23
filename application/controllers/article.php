@@ -84,47 +84,52 @@
                 $data["url"] = $url;
 
                 $nodes = $dom->getElementsByTagName('title');
-                $data["title"] = $nodes->item(0)->nodeValue;
+                $data["title"] = utf8_decode($nodes->item(0)->nodeValue);
 
                 $nodes = $dom->getElementsByTagName('meta');
+                $data["meta"]= "pas de description disponible";
                 foreach($nodes as $node){
-                    $data["meta"] = $node->getAttribute("content");
                     if($node->getAttribute("name")==="description"){
-                        
+                        $data["meta"] =utf8_decode($node->getAttribute("content")); 
                     }
-                    else{$data["meta"]= "pas de description disponible";}
                 }
+                
                 $nodes = $dom->getElementsByTagName('h1');
-                if(isset($nodes))
+                foreach($nodes as $node){
+                var_dump($node);
+                if(isset($node))
                 {
-                    $data["h1"] = $nodes->item(0)->nodeValue;
+                    $data["h1"] = utf8_decode($nodes->item(0)->nodeValue);
                 }
                 else
                 {
                     $data["h1"] = "pas de h1";
                 }
-
+                 }
                 $nodes = $dom->getElementsByTagName('img');
                 $data["image"] = array();
-
-                foreach($nodes as $node){
-                    
-                    $image = $node->getAttribute("src");
-                    
-                    $url_image = $this->rel2abs($image, $url);
-                                             
-                    $taille = getimagesize($url_image);
-                    if($taille[0]>70){
-                        array_push($data["image"],$url_image);
-                    }
-                }   
-            }
-            else
-            {
-                $data["correct"] = false;
-                $data["url"] = $url;
-            }
-            $this->afficher($data);
+                if(isset($nodes))
+                {
+                   foreach($nodes as $node)
+                   {
+                      $image = $node->getAttribute("src");
+                      $url_image = $this->rel2abs($image, $url);
+                      $taille = getimagesize($url_image);
+                      if($taille[0]>70){
+                          array_push($data["image"],$url_image);
+                      }
+                   }
+                }
+                else{
+                    $data["image"][0] = "url_site()/web/img/default.jpeg" ;
+                }
+           }
+           else
+           {
+               $data["correct"] = false;
+               $data["url"] = $url;
+           }
+           $this->afficher($data);
         }
         
         /*public function analyser($resultat,$url){
@@ -173,37 +178,23 @@
         }
        */
         public function afficher($data){
-            //var_dump($data);
-           
             $this->load->model('M_Article');
             $dataList['articles'] = $this->M_Article->lister();
             $dataLayout['vue'] = $this->load->view('lister',$dataList,true);
             $dataLayout['vue'] = $this->load->view('lister',$data,true);
-            
-           
             $this->load->view('layout',$dataLayout);
-            
         }
         
         public function enregistrer(){
-            //$this->load->helper('form');
-            //$this->load->helper('url');
-            /*define('DIR_CSS', 'web/css/style.css');*/
-            
+                      
             $this->load->model('M_Article');
-            //$dataList['articles'] = $this->M_Article->lister();
-            
-            //$dataLayout['vue'] = $this->load->view('lister',$dataList,true);
-            //$this->load->view('layout',$dataLayout);
-            
             $data['ajout_url'] = $this->input->post('url');
             $data['ajout_title'] = $this->input->post('title');
             $data['ajout_meta'] = $this->input->post('meta');
             $data['ajout_h1'] = $this->input->post('h1');
             $data['ajout_image'] = $this->input->post('image');
             $this->M_Article->enregistrer($data);
-            redirect(site_url());
-            
+            redirect(site_url()); 
         }
         
         public function delete(){
@@ -221,6 +212,7 @@
        
        public function rel2abs($rel, $base)
        {
+            $path=null;
             /* return if already absolute URL */
             if (parse_url($rel, PHP_URL_SCHEME) != '') return $rel;
 

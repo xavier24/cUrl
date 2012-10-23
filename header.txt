@@ -1,0 +1,11 @@
+HTTP/1.1 301 Moved Permanently
+Date: Thu, 18 Oct 2012 22:42:36 GMT
+Server: Apache
+X-Content-Type-Options: nosniff
+Expires: Tue, 27 Apr 1971 19:44:06 EST
+Cache-Control: no-cache
+Content-Length: 0
+Location: http://www.youtube.com/?gl=BE
+Vary: Accept-Encoding
+Content-Type: text/html; charset=utf-8
+

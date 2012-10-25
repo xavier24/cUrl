@@ -80,6 +80,24 @@ label{
 #url{
     width: 450px;
 }
+#chargement{
+    display: none;
+    border:4px double #211A0A;
+    padding:10px;
+    background-color: #444;
+    margin:10px 0;
+    color:white;
+    position: relative;
+    font-size:1.2em;
+    text-align: center;
+}
+#chargement img{
+    margin-top:10px; 
+}
+#erreur{
+    font-size:1.2em;
+    text-align: center;
+}
 #resultat{
     border:4px double #211A0A;
     padding:10px;

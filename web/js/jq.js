@@ -13,7 +13,14 @@ $(function(){
                 }
             });
         });
-          
+        
+        
+        $('#formulaire input:submit').on('click',function(){
+          $('#chargement').css("display","block");
+          if('#resultat'){
+             $('#resultat').hide(); 
+          }
+        });
 	
 	var $figs = $('#resultat .resul_image');
 	$figs.not(":first").hide();

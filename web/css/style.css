@@ -71,7 +71,7 @@ form{
     padding:10px;
     background-color: #CCC;
 }
-label{
+#formulaire label{
     display: block;
     margin-bottom:10px;
     text-align:center;
@@ -111,20 +111,28 @@ label{
     text-decoration: none;
     font-weight: bold;
 }
+#resultat label{
+    display:none;
+}
 .texte{
     display:inline-block;
     width:280px;
     margin:0 0 50px 26px;
 }
+.texte p{
+    padding-bottom: 5px;
+}
 .input_texte{
     display: none;
+    width:280px;
+    margin-bottom: 10px;
 }
 #resultat form{
     background-color: #444;
     border:none;
-    position: absolute;
-    bottom:15px;
-    right:15px;
+    aposition: absolute;
+    abottom:15px;
+    aright:15px;
     padding:0;
 }
 #articles{

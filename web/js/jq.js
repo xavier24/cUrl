@@ -54,6 +54,14 @@ $(function(){
                                                                 $prevImg.fadeIn("fast"); 
 								});              
         });
+        
+        $("#modifier").on("click",function(){
+                console.log('jglkg');
+                $(".input_texte").css("display","block");
+                $("#resultat label").css("display","block");
+                $(".resul_texte").css("display","none");
+            
+        });
 
         
 });

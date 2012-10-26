@@ -27,19 +27,29 @@
 
             <div class="texte">
                 <h2><?php echo $url; ?></h2>
-                <p id="resul_titre" ><a href="<?php echo $url; ?>" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></p>
-                <p id="resul_h1" ><?php echo $h1; ?></p>
-                <p id="resul_meta" ><?php echo $meta; ?></p>     
+                <p id="resul_titre" class="resul_texte" ><a href="<?php echo $url; ?>" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></p>
+                <p id="resul_h1" class="resul_texte" ><?php echo $h1; ?></p>
+                <p id="resul_meta" class="resul_texte" ><?php echo $meta; ?></p>
+                <p id="modifier" class="resul_texte">Modifier</p>
                 <?php 
                     echo form_open('article/enregistrer',array('method'=>'post'));
-                    $ajout_url= array('value'=>$url,'class'=>'input_texte', 'name'=>'url');
+                    echo form_label("Adresse du site",'url');
+                    $ajout_url= array('value'=>$url,'class'=>'input_texte', 'name'=>'url','id'=>'ajout_url');
                     echo form_input($ajout_url);
-                    $ajout_title= array('value'=>$title,'class'=>'input_texte', 'name'=>'title');
+                    
+                    echo form_label("Nom du site",'title');
+                    $ajout_title= array('value'=>$title,'class'=>'input_texte', 'name'=>'title','id'=>'ajout_title');
                     echo form_input($ajout_title);
-                    $ajout_h1= array('value'=>$h1,'class'=>'input_texte','name'=>'h1');
+                    
+                    echo form_label("Titre de la page",'h1');
+                    $ajout_h1= array('value'=>$h1,'class'=>'input_texte','name'=>'h1','id'=>'ajout_h1');
                     echo form_input($ajout_h1);
-                    $ajout_meta= array('value'=>$meta,'class'=>'input_texte', 'name'=>'meta');
-                    echo form_input($ajout_meta);
+                    
+                    echo form_label("Description de la page",'meta');
+                    $ajout_meta= array('value'=>$meta,'class'=>'input_texte', 'name'=>'meta','id'=>'ajout_meta');
+                    echo form_textarea($ajout_meta);
+                    
+                    echo form_label("Entrez l'adresse de l'image que vous desirez",'image');
                     $ajout_image=array('value'=>$image[0],'class'=>'input_texte', 'name'=>'image','id'=>'ajout_image');
                     echo form_input($ajout_image);
 

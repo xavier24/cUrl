@@ -82,12 +82,14 @@
                 @$dom->loadHTML($resultat);
                 $data["val"] = 2;
                 $data["url"] = $url;
-
+                $data["title"] = "Ce site n'a communiqué aucun nom";
+                $data["h1"] = "Ce site n'a communiqué aucun titre général";
+                $data["meta"]= "Ce site n'a communiqué aucune description";
+                
                 $nodes = $dom->getElementsByTagName('title');
                 $data["title"] = utf8_decode($nodes->item(0)->nodeValue);
 
                 $nodes = $dom->getElementsByTagName('meta');
-                $data["meta"]= "pas de description disponible";
                 foreach($nodes as $node){
                     if($node->getAttribute("name")==="description"){
                         $data["meta"] =utf8_decode($node->getAttribute("content")); 
@@ -96,33 +98,33 @@
                 
                 $nodes = $dom->getElementsByTagName('h1');
                 foreach($nodes as $node){
-                var_dump($node);
-                if(isset($node))
-                {
-                    $data["h1"] = utf8_decode($nodes->item(0)->nodeValue);
-                }
-                else
-                {
-                    $data["h1"] = "pas de h1";
-                }
+                    if(isset($node))
+                    {
+                        $data["h1"] = utf8_decode($nodes->item(0)->nodeValue);
+                    }
                  }
+                 
                 $nodes = $dom->getElementsByTagName('img');
                 $data["image"] = array();
+                $image_non_dispo = base_url()."/web/images/visuel-non-disponible.png" ;
+                $data["image"][0] = $image_non_dispo;
                 if(isset($nodes))
-                {
+                {   
                    foreach($nodes as $node)
                    {
+                      if($data["image"][0] === $image_non_dispo){  
+                          unset($data["image"]);
+                          $data["image"] = array();
+                      }
                       $image = $node->getAttribute("src");
                       $url_image = $this->rel2abs($image, $url);
                       $taille = getimagesize($url_image);
                       if($taille[0]>70){
-                          array_push($data["image"],$url_image);
-                      }
+                         array_push($data["image"],$url_image);
+                      } 
                    }
-                }
-                else{
-                    $data["image"][0] = "url_site()/web/img/default.jpeg" ;
-                }
+                   //var_dump($data["image"]);
+                } 
            }
            else
            {

@@ -30,28 +30,17 @@ $(function(){
 	$("#suivant").on("click",function(){
                 var $nextImg = $figs.filter(":visible").next();
                 
-                
                 if( $nextImg.size() == 0){
                     $nextImg = $figs.first();
                 }
-                
-                
+                                
                 $figs.filter(":visible").fadeOut("fast",function(){
                                                                 $nextImg.fadeIn("fast"); 
                                                              });
             
-            
-            
-            
-                 
-                
-                var $url_image = $nextImg.children("img").eq(0).attr('src');
-                
-                
-                console.log($url_image);
-                //$input.val("$image["+$valeur+"]");
+                var $url_image = $nextImg.children("img").eq(0).attr('src');               
                 $input.val($url_image);
-                console.log($input.val());
+                //console.log($input.val());
         
     
         });
@@ -63,8 +52,7 @@ $(function(){
 		}
                 $figs.filter(":visible").fadeOut("fast",function(){
                                                                 $prevImg.fadeIn("fast"); 
-								});
-                
+								});              
         });
 
         

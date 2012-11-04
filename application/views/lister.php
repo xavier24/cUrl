@@ -30,7 +30,7 @@
                 <p id="resul_titre" class="resul_texte" ><a href="<?php echo $url; ?>" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></p>
                 <p id="resul_h1" class="resul_texte" ><?php echo $h1; ?></p>
                 <p id="resul_meta" class="resul_texte" ><?php echo $meta; ?></p>
-                <p id="modifier" class="resul_texte">Modifier</p>
+                <p id="modifier" class="resul_texte"><a href="#">Modifier</a></p>
                 <?php 
                     echo form_open('article/enregistrer',array('method'=>'post'));
                     echo form_label("Adresse du site",'url');
@@ -78,7 +78,7 @@
                   <p><?php echo $article->h1; ?></p>
                   <p><?php echo $article->texte; ?></p>
                   
-                  <p class="auteur">Posté par : <a><?php echo $article->nom; ?></a></p>
+                 <!--<p class="auteur">Posté par : <a>--><?php /*echo $article->nom; */?><!--</a></p>-->
                   
               </div>
            </div>
@@ -89,6 +89,6 @@
    <?php }
 ?>
 </div>
-<script src="<?php echo site_url();?>web/js/jquery.js"></script>
-<script src="<?php echo site_url();?>web/js/jq.js"></script>
+<script src="<?php echo base_url();?>web/js/jquery.js"></script>
+<script src="<?php echo base_url();?>web/js/jq.js"></script>
 		 

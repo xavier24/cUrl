@@ -104,27 +104,26 @@
                     }
                  }
                  
+                $data["image"][] = base_url()."/web/images/visuel-non-disponible.png";
+                
                 $nodes = $dom->getElementsByTagName('img');
-                $data["image"] = array();
-                $image_non_dispo = base_url()."/web/images/visuel-non-disponible.png" ;
-                $data["image"][0] = $image_non_dispo;
-                if(isset($nodes))
-                {   
+                
+                if(count($nodes))
+                {
                    foreach($nodes as $node)
                    {
-                      if($data["image"][0] === $image_non_dispo){  
-                          unset($data["image"]);
-                          $data["image"] = array();
-                      }
                       $image = $node->getAttribute("src");
                       $url_image = $this->rel2abs($image, $url);
                       $taille = getimagesize($url_image);
                       if($taille[0]>70){
-                         array_push($data["image"],$url_image);
-                      } 
+                         $data["image"][] = $url_image;
+                      }
                    }
-                   //var_dump($data["image"]);
-                } 
+                   if( count( $data["image"] ) > 1 )
+                   {
+                      array_shift($data["image"]);
+                   }
+                }
            }
            else
            {

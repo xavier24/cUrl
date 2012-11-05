@@ -50,7 +50,7 @@
                     echo form_textarea($ajout_meta);
                     
                     echo form_label("Entrez l'adresse de l'image que vous desirez",'image');
-                    $ajout_image=array('value'=>$image[0],'class'=>'input_texte', 'name'=>'image','id'=>'ajout_image');
+                    $ajout_image=array('value'=> $image[0] ,'class'=>'input_texte', 'name'=>'image','id'=>'ajout_image');
                     echo form_input($ajout_image);
 
 

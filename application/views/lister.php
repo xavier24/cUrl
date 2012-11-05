@@ -26,8 +26,8 @@
             </div>
 
             <div class="texte">
-                <h2><?php echo $url; ?></h2>
-                <p id="resul_titre" class="resul_texte" ><a href="<?php echo $url; ?>" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></p>
+                <h3><?php echo $url; ?></h3>
+                <h4 id="resul_titre" class="resul_texte" ><a href="<?php echo $url; ?>" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></h4>
                 <p id="resul_h1" class="resul_texte" ><?php echo $h1; ?></p>
                 <p id="resul_meta" class="resul_texte" ><?php echo $meta; ?></p>
                 <p id="modifier" class="resul_texte"><a href="#">Modifier</a></p>
@@ -75,7 +75,7 @@
               </div>
               <div class="texte">
                   <h3><a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a></h3>
-                  <p><?php echo $article->h1; ?></p>
+                  <h4><?php echo $article->h1; ?></h4>
                   <p><?php echo $article->texte; ?></p>
                   
                  <!--<p class="auteur">Posté par : <a>--><?php /*echo $article->nom; */?><!--</a></p>-->

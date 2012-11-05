@@ -27,7 +27,10 @@
             
             $this->load->helper('form');
             $url = $this->input->post('url');
-                   
+            
+            /*$this->load->model('M_Article');
+            $verif = $this->M_Article->verifier($url);*/
+            
             if (preg_match('`^https://|http://`i', $url)){
                $this->cURL($url);
             }

@@ -12,7 +12,7 @@ body{
     background-color: grey;
     
 }
-#formulaire{
+#formulaire,#member{
     border:4px double #AAA;
     padding:10px;
     background-color: #CCC;
@@ -20,6 +20,29 @@ body{
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     box-shadow: 4px -4px 5px #555;
+}
+#member{
+    text-align: center;
+    position: relative;
+}
+#member form{
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow:-1px -1px 0 rgba(150, 150, 150, 0.8),1px 1px 0 #EEE;
+    padding: 20px;
+}
+#member label{
+    display: inline-block;
+    width: 100px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    font-size: 1.2em;
+    color:#222;
+}
+#member input{
+    box-shadow:-1px -1px 0 rgba(150, 150, 150, 0.8),1px 1px 0 #EEE;
 }
 #formulaire p{
     display:inline-block;
@@ -111,7 +134,7 @@ body{
     cursor:pointer;
     margin-top: 10px;
 }
-#modifier a:hover, .add:hover{
+#modifier a:hover, .add:hover, .connex:hover, h4 a:hover{
     background-color: #333;
     color:#FF9326;
     box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
@@ -209,6 +232,20 @@ h4{
     margin-bottom: 20px;
     font-weight: bold;
 }
+h4 a{
+    display:inline-block;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1),0px -1px 0 rgba(0, 0, 0, 0.8);
+    font-weight: normal;
+    text-align: center;
+    background: #222;
+    border-radius: 12px;
+    color: #FFFFFF;
+    line-height: 1;
+    padding: 4px 11px 4px;
+    text-decoration: none;
+    cursor:pointer;
+    margin-top: 10px;
+}
 
 #suivant{
     display:inline-block;
@@ -237,4 +274,16 @@ h4{
 }
 .delete:hover{
     color:#666;
+}
+.connex{
+    background: #111;
+    border-radius: 12px 12px 12px 12px;
+    height: 30px;
+    color: #FFFFFF;
+    line-height: 1;
+    padding: 4px 11px 4px;
+    text-decoration: none;
+    border:none;
+    cursor:pointer;
+    margin-top: 10px;
 }

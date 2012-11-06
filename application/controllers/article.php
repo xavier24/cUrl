@@ -4,7 +4,7 @@
 	
     class Article extends CI_Controller {
 
-
+        
         public function index()
         {
            $this->load->helper('form');
@@ -13,14 +13,13 @@
         }
         
         public function lister(){
-            
+            $info_membre = $this->session->userdata('logged_in');
+            $id_membre = $info_membre->membre_id;
             $this->load->model('M_Article');
-            $dataList['articles'] = $this->M_Article->lister();
+            $dataList['articles'] = $this->M_Article->lister($id_membre);
             
             $dataLayout['vue'] = $this->load->view('lister',$dataList,true);
-            $this->load->view('layout',$dataLayout);
-            
-            
+            $this->load->view('layout',$dataLayout);    
 	}
        
         public function entrerURL(){
@@ -182,8 +181,10 @@
         }
        */
         public function afficher($data){
+            $info_membre = $this->session->userdata('logged_in');
+            $id_membre = $info_membre->membre_id;
             $this->load->model('M_Article');
-            $dataList['articles'] = $this->M_Article->lister();
+            $dataList['articles'] = $this->M_Article->lister($id_membre);
             $dataLayout['vue'] = $this->load->view('lister',$dataList,true);
             $dataLayout['vue'] = $this->load->view('lister',$data,true);
             $this->load->view('layout',$dataLayout);
@@ -197,14 +198,15 @@
             $data['ajout_meta'] = $this->input->post('meta');
             $data['ajout_h1'] = $this->input->post('h1');
             $data['ajout_image'] = $this->input->post('image');
+            $data['membre_id'] = $this->session->userdata('logged_in')->membre_id;
             $this->M_Article->enregistrer($data);
-            redirect(site_url()); 
+            redirect(site_url().'article'); 
         }
         
         public function delete(){
              $this->load->model('M_Article');
-             $id = $this->uri->segment(3);
-             $this->M_Article->delete($id);
+             $id_article = $this->uri->segment(3);
+             $this->M_Article->delete($id_article);
             if($this->input->is_ajax_request()){
                 echo "lien supprimé !";
             }
@@ -217,6 +219,7 @@
        public function rel2abs($rel, $base)
        {
             $path=null;
+            $scheme="http";
             /* return if already absolute URL */
             if (parse_url($rel, PHP_URL_SCHEME) != '') return $rel;
 

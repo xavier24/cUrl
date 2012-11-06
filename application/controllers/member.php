@@ -17,13 +17,12 @@ class member extends CI_Controller {
         if($this->M_Member->verifier($data)){
             
             $info_membre = $this->M_Member->getIdMembre($data['email']);
-            //$nom_membre = $this->M_Member->getNameMembre($data);
             $this->session->set_userdata('logged_in',$info_membre);
             redirect('article');
         }
         else{
-            $connexion = "Identifiant ou mot de passe incorrect";
-            redirect('member');
+           $connexion = "Identifiant ou mot de passe incorrect";
+           redirect('member');
         }
         
     }

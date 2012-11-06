@@ -16,4 +16,6 @@
         echo form_submit('check" class="connex','Connexion');
         echo form_close();
     ?>
+        <p><a class="inscription" href="<?php echo site_url(); ?>inscription">Inscription</a></p>
+              
 </div>

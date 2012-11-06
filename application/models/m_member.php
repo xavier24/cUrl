@@ -18,12 +18,4 @@
             $query = $this->db->get();
             return $query->row();
         }
-        public function getNameMembre($data)
-        {
-            $this->db->select('nom');
-            $this->db->from('membres');
-            $this->db->where('email',$data['email']);
-            $query = $this->db->get();
-            return $query->result();
-        }
     }

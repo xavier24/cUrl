@@ -1,16 +1,15 @@
-
+*{vertical-align: top;}
 
 html{
-    background-color: grey;
+    background-color: #FFFEA8;
     font-family: Calibri, "Myriad Pro", sans-serif;
     font-size: 14px;
+    background-image: url("../images/hachures.png");
 }
 body{
-    width:600px;
+    width:900px;
     height: 100%;
-    margin:20px auto;
-    background-color: grey;
-    
+    margin:20px auto;    
 }
 #formulaire,#member{
     border:4px double #AAA;
@@ -62,13 +61,30 @@ body{
     width: 445px;
     height: 20px;
 }
+#corps{
+    width: 650px;
+    display: inline-block;
+}
+#sidebar{
+    display: inline-block;
+    width: 213px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border:4px double #aaa;
+    padding:8px;
+    background-color: #ccc;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: 4px -4px 5px #555;
+}
 /*---------------------------------------------------------------*/
 #chargement{
     display: none;
     border:4px double #211A0A;
     padding:10px;
     background-color: #444;
-    margin:10px 0;
+    margin-top:20px;
     color:white;
     position: relative;
     font-size:1.2em;
@@ -91,7 +107,7 @@ body{
     border:4px double #333333;
     padding:10px;
     background-color: #444;
-    margin:10px 0;
+    margin-top:20px;
     color:white;
     position: relative;
     border-radius: 4px;
@@ -184,7 +200,7 @@ body{
 #articles a{
     text-decoration: none;
 }
-.article{
+article{
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -201,15 +217,15 @@ body{
     width: 250px;
     padding: 5px;
 }
-.image div{
+.image figure{
     text-align: center;
     min-height:200px;
 }
-.image img{
+figure img{
     vertical-align: middle;
     display: inline-block;
 }
-h2{
+h1{
     color:#888;
     text-shadow: -1px -1px 0 rgba(50, 50, 50, 0.8), 1px 1px 0 #EEEEEE;
     font-size:2em;

@@ -1,5 +1,5 @@
-<div id="member">
-    <h2>Connexion à votre compte</h2>
+<section id="member">
+    <h1>Connexion à votre compte</h1>
     <?php if(isset($connexion)){ ?>
         <h3><?php echo $connexion ?></h3>
         <?php }
@@ -18,4 +18,4 @@
     ?>
         <p><a class="inscription" href="<?php echo site_url(); ?>inscription">Inscription</a></p>
               
-</div>
+</section>

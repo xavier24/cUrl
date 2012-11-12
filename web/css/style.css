@@ -116,6 +116,7 @@ body{
     display: inline-block;
     width: 250px;
     padding: 5px;
+    margin-top: 10px;
 }
 .image figure {
     min-height: 200px;
@@ -133,7 +134,10 @@ body{
 .texte{
     display:inline-block;
     width:330px;
-    margin:20px 0 30px 26px;
+    margin: 10px 0 30px 26px;
+}
+h1{
+    margin:0;
 }
 .titre{
     color: white;
@@ -322,4 +326,8 @@ article img{
  .erreur_inscription{
      color:red;
      font-size:1.2em;
+ }
+ .modifier{
+     color:;
+     text-decoration: none;
  }

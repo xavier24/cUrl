@@ -32,8 +32,19 @@
             $this->load->helper('form');
             $url = $this->input->post('url');
             
-            /*$this->load->model('M_Article');
-            $verif = $this->M_Article->verifier($url);*/
+            $info_membre = $this->session->userdata('logged_in');
+            $id_membre = $info_membre->membre_id;
+            $this->load->model('M_Article');
+            if($this->M_Article->verifier($url,$id_membre)){
+                $data["correct"] = false;
+                $data["existe"] = "Deja dans la DB";
+                $data["url"] = $url ;
+                $data["message"] = ' se trouve déjà dans votre sélection d\'article.' ;
+                $data["modifier"] = true;
+                var_dump("deja dans la db");
+                $this->afficher($data);
+                return;
+            }
             
             if (preg_match('`^https://|http://`i', $url)){
                $this->cURL($url);
@@ -127,7 +138,7 @@
            }
            else{
                $data["correct"] = false;
-               $data["url"] = $url;
+               $data["url"] = $url.' n\'existe pas.';
            }
            $this->afficher($data);
         }

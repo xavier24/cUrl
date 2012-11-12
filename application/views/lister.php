@@ -1,28 +1,29 @@
-<header id="formulaire"> 
-    <section>
+<header id="formulaire" class="block"> 
+    <section id="recherche">
         <?php 
         echo form_open('article/entrerURL',array('method'=>'post'));
-        echo form_label("Entrez l'adresse du site",'url');
+        echo form_label("Entrez l'adresse du site",'url" class="entete"');
         ?><p>http://</p><?php
         $urlInput = array('name'=>'url','id'=>'url');
         
         echo form_input($urlInput);
-        echo form_submit('check','Analyser');
+        echo form_submit('check" class="analyse','Analyser');
         echo form_close();
      ?>
-     </section
-     <section>
-        <h4>
+    </section>
+     <section id="connexion">
+         <p>Bonjour <?php echo $nom_membre; ?></p>
+        <h1 class="deconnex">
             <?php echo anchor( 'member/deconnecter',"Se déconnecter",array('title'=>'Pour se déconnecter', 'hreflang'=>'fr' )); ?>
-        </h4>
+        </h1>
     </section>
 </header>
 <section id="corps">
-    <section id="chargement">
-        <p>Recherche en cours</p><img src="<?php echo site_url(); ?>web/images/loading.gif" />
+    <section id="chargement" class="block">
+        <p>Recherche en cours...</p><img src="<?php echo site_url(); ?>web/images/ajax-loader(3).gif" />
     </section>
     <?php if(isset($url)){?>
-        <section id="resultat">
+        <section id="resultat" class="block">
             <?php if($correct==true){?>
                 <section class="image">
                     <figure>
@@ -34,8 +35,8 @@
                 </section>
 
                 <section class="texte">
-                    <h3><?php echo $url; ?></h3>
-                    <h4 id="resul_titre" class="resul_texte" ><a href="<?php echo $url; ?>" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></h4>
+                    <h1 class="titre"><?php echo $url; ?></h1>
+                    <h2 id="resul_titre" class="resul_texte bouton" ><a href="<?php echo $url; ?>" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></h2>
                     <p id="resul_h1" class="resul_texte" ><?php echo $h1; ?></p>
                     <p id="resul_meta" class="resul_texte" ><?php echo $meta; ?></p>
                     <p id="modifier" class="resul_texte"><a href="#">Modifier</a></p>
@@ -74,20 +75,19 @@
             <?php } ?>
         </section>
     <?php } ?>
-    <section id="articles">
-        <h1>Articles</h1>
+    <section id="articles" class="block">
+        <h1 class="entete">Articles</h1>
         <?php if(count($articles)){ ?>
             <?php foreach(array_reverse($articles) as $article):?>
-            <article>
+            <article id="article_<?php echo $article->url; ?>">
                 <p><a class="delete" href="<?php echo site_url(); ?>article/delete/<?php echo $article->article_id ?>">supprimer</a></p>
                 <figure class="image">
                     <img src="<?php echo $article->url_image; ?>" width="250"/>
                 </figure>
                 <section class="texte">
-                    <h3><a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a></h3>
-                    <h4><?php echo $article->h1; ?></h4>
+                    <h1 ><a class="titre_article" href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a></h1>
+                    <h2><?php echo $article->h1; ?></h2>
                     <p><?php echo $article->texte; ?></p>
-                    <!--<p class="auteur">Posté par : <a>--><?php /*echo $article->nom; */?><!--</a></p>-->
                 </section>
             </article>
             <?php endforeach; ?>
@@ -98,12 +98,15 @@
     ?>
     </section>
 </section>
-<aside id="sidebar">
-    <h1>Mes liens</h1>
+<aside id="sidebar" class="block">
+    <h1 class="entete">Mes liens</h1>
     <?php if(count($articles)){ ?>
         <ul>
             <?php foreach(array_reverse($articles) as $article):?>
-                <li><a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a></li>
+                <li>
+                    <a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a>
+                    <a href="#article_<?php echo $article->url; ?>"><img src="<?php echo base_url();?>web/images/liste.png" /></a>
+                </li>
             <?php endforeach; ?>
         </ul>
     <?php }

@@ -18,7 +18,7 @@ body{
     box-shadow: 4px -4px 5px #555;
     
     
-    background-color: #CCC;
+    background-color: #DDD598;
     border:4px double #AAA;
     padding:10px;
     margin-bottom: 15px;
@@ -33,18 +33,14 @@ body{
     display: inline-block;
 }
 #chargement, #resultat{
-    border:4px double #211A0A;
-    background-color: #444;
+    border:4px double #9F882E;
+    background-color: #E6CF75;
     position: relative;
 }
 #recherche{
     display: inline-block;
     width:630px;
-    margin-right: 10px;
-}
-#recherche label{
-    font-size:2.6em;
-    font-weight: bold;
+    margin-right: 10px;    
 }
 #recherche p{
     display:inline-block;
@@ -62,8 +58,12 @@ body{
     margin-bottom:10px;
     text-align:center;
     font-size: 2em;
-    color:#888;
+    color:#B79322;
     text-shadow: -1px -1px 0 rgba(50, 50, 50, 0.8), 1px 1px 0 #EEEEEE;
+}
+#recherche label{
+    font-size: 2.7em;
+    font-weight: bold;
 }
 #url{
     width: 470px;
@@ -100,13 +100,9 @@ body{
 }
 #chargement{
     display:none;
-    color:#fff;
 }
 #chargement img{
     margin-top:10px; 
-}
-#erreur{
-    color:#fff;
 }
 .image{
     display: inline-block;

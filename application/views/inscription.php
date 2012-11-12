@@ -1,5 +1,5 @@
-<div id="member">
-    <h2>Créer mon compte</h2>
+<div id="member" class="block">
+    <h2 class="entete">Créer mon compte</h2>
     <?php if(isset($connexion)){ ?>
         <h3><?php echo $connexion ?></h3>
         <?php }

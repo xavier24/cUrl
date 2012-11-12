@@ -21,6 +21,7 @@
         public function lister(){
             $info_membre = $this->session->userdata('logged_in');
             $id_membre = $info_membre->membre_id;
+            $dataList['nom_membre'] = $info_membre->nom;
             $this->load->model('M_Article');
             $dataList['articles'] = $this->M_Article->lister($id_membre);
             
@@ -189,6 +190,7 @@
         public function afficher($data){
             $info_membre = $this->session->userdata('logged_in');
             $id_membre = $info_membre->membre_id;
+            $dataList['nom_membre'] = $info_membre->nom;
             $this->load->model('M_Article');
             $dataList['articles'] = $this->M_Article->lister($id_membre);
             $dataLayout['vue'] = $this->load->view('lister',$dataList,true);

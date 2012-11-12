@@ -1,5 +1,5 @@
-<section id="member">
-    <h1>Connexion à votre compte</h1>
+<section id="member" class="block">
+    <h1 class="entete">Connexion à votre compte</h1>
     <?php if(isset($connexion)){ ?>
         <h3><?php echo $connexion ?></h3>
         <?php }

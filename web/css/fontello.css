@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'fontello';
+  src: url("../font/fontello.eot");
+  src: url("../font/fontello.eot?#iefix") format('embedded-opentype'), url("../font/fontello.woff") format('woff'), url("../font/fontello.ttf") format('truetype'), url("../font/fontello.svg#fontello") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: 'fontello';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  opacity: 0.8;
+/* Uncomment for 3D effect */
+/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+/* fix buttons height */
+  line-height: 1em;
+/* you can be more comfortable with increased icons size */
+/* font-size: 120%; */
+}
+
+.icon-right-dir:before { content: '\25b8'; } /* 'â–¸' */
+.icon-down-dir:before { content: '\25be'; } /* 'â–¾' */
+.icon-pencil:before { content: '\270e'; } /* 'âœŽ' */
+.icon-right-circle li:before { content: '\e4a2'; } /* 'î’¢' */
+.icon-down-circle li:before { content: '\e4a4'; } /* 'î’¤' */
+.icon-trash:before { content: '\e729'; } /* 'îœ©' */
+.icon-left-open:before { content: '\e75d'; } /* 'î' */
+.icon-right-open:before { content: '\e75e'; } /* 'îž' */
+.icon-off:before { content: '\e78e'; } /* 'îžŽ' */
+.icon-globe:before { content: 'ðŸŒŽ'; } /* '\1f30e' */
+.icon-floppy:before { content: 'ðŸ’¾'; } /* '\1f4be' */
+.icon-search:before { content: 'ðŸ”'; } /* '\1f50d' */

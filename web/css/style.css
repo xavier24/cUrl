@@ -32,7 +32,7 @@ body{
     width: 200px;
     display: inline-block;
 }
-#chargement, #resultat{
+#chargement, #resultat,#sidebar{
     border:4px double #211A0A;
     background-color: #444;
     position: relative;
@@ -53,7 +53,7 @@ body{
     font-size:1.2em;
     font-weight: bold;
     border-radius: 12px 0 0 12px;
-    box-shadow: 1px -1px 0 rgba(0,0,0,0.3),0 1px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 1px -1px 0 rgba(0,0,0,0.3),0 1px 0 rgba(255, 255, 255, 1);
     color: #222;
     padding: 4px 11px;
  }
@@ -62,8 +62,12 @@ body{
     margin-bottom:10px;
     text-align:center;
     font-size: 2em;
-    color:#888;
-    text-shadow: -1px -1px 0 rgba(50, 50, 50, 0.8), 1px 1px 0 #EEEEEE;
+    color: rgba(250,250,250, 0.5);
+    text-shadow: 0px 1px 2px #AAAAAA, 0px 1px 2px #000000, 1px 1px 1px #AAA;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));
+}
+#sidebar .entete{
+    color:#FFF;
 }
 #url{
     width: 470px;
@@ -147,6 +151,9 @@ body{
     position: absolute;
     text-decoration: none;
 }
+#resultat{
+    color:#fff;
+}
 #resultat label{
     display:none;
     color:#FFF;
@@ -184,7 +191,10 @@ article{
     padding: 10px 5px;
     position: relative;
     color:#222;
-    box-shadow:-1px -1px 0 rgba(150, 150, 150, 0.8),1px 1px 0 #EEE;
+    box-shadow:-1px -1px 0 rgba(150, 150, 150, 0.8),inset 0 0 85px #AAA,1px 1px 0 #EEE;
+}
+article img{
+    box-shadow:0 0 14px rgba(0, 0, 0, 0.3);
 }
 .delete{    
     background: #CCC;
@@ -236,47 +246,80 @@ article{
 }
 #sidebar li{
     list-style: none;
-    padding:5px 3px;
+    padding:7px 3px;
 }
 #sidebar li+li{
     border-top:1px solid #AAA;
 }
-#sidebar li:before{
-    
-}
 #sidebar li:hover{
-    background-color: #AAA;
+    background-color: #777;
+}
+#sidebar span{
+    display: inline-block;
+    margin-top: 3px;
 }
 #sidebar a:first-child{
     text-decoration: none;
-    color:#000;
+    color:#fff;
     display: inline-block;
-    width:170px;
+    width:140px;
 }
 #sidebar a+a{
     display: inline-block;
     float: right;
 }
-#member{
+#member,#inscription{
     text-align: center;
     position: relative;
 }
-#member form{
+#member form,#inscription form{
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     box-shadow:-1px -1px 0 rgba(150, 150, 150, 0.8),1px 1px 0 #EEE;
     padding: 20px;
 }
-#member label{
-    display: inline-block;
-    width: 100px;
-    padding-top: 5px;
-    padding-right: 10px;
-    padding-bottom: 20px;
-    font-size: 1.2em;
-    color:#222;
-}
 #member input{
     box-shadow:-1px -1px 0 rgba(150, 150, 150, 0.8),1px 1px 0 #EEE;
 }
+.connex{
+    background: #111;
+    border-radius: 12px 12px 12px 12px;
+    height: 30px;
+    color: #FFFFFF;
+    line-height: 1;
+    padding: 4px 11px 4px;
+    text-decoration: none;
+    border:none;
+    cursor:pointer;
+    margin-top: 10px;
+}
+#member input, #inscription input{
+    width: 300px;
+    height: 25px;
+}
+#member label, #inscription label{
+    display:inline-block;
+    margin-bottom: 20px;
+    padding-right:5px;
+    font-size:1.2em;
+    font-weight: bold;
+    border-radius: 12px 0 0 12px;
+    box-shadow: 1px -1px 0 rgba(0,0,0,0.3),0 1px 0 rgba(255, 255, 255, 1);
+    color: #222;
+    padding: 5px 11px;
+    text-align:right;
+ }
+ #member label{
+    width:110px;
+ }
+ #inscription label{
+     width:270px;
+ }
+ .inscription{
+     color:#000;
+ }
+ .erreur_inscription{
+     color:red;
+     font-size:1.2em;
+ }

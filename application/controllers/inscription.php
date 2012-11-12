@@ -4,8 +4,10 @@ class inscription extends CI_Controller {
     
     public function index(){
         $this->load->helper('form');
+        $data['message'] = $this->session->flashdata('item');
         $data['main_title'] = 'CURL - connexion';
         $data['vue'] = $this->load->view('inscription',$data,TRUE);
+        var_dump($data['message']);
         $this->load->view('layout',$data);
     }
     
@@ -17,7 +19,17 @@ class inscription extends CI_Controller {
         $data['mdp2'] = $this->input->post('mdp2');
         
         if($this->M_Inscription->verifier($data)){
-            var_dump('L\'adresse Email "'.$data['email'].'" est deja associer a un compte');
+            $this->session->set_flashdata('L\'adresse Email "'.$data['email'].'" est déjà associée à un compte !');
+            var_dump('email');
+            $this->index();
+            return;
+            
+        }
+        elseif( strlen($data['mdp'])<5 ){
+            $this->session->set_flashdata('Veuillez choisir un mot de pass d\'au moins 5 caractères.');
+            var_dump('5caractere');
+            $this->index();
+            return;
         }
         elseif($data['mdp']===$data['mdp2']){
             $this->M_Inscription->inscrire($data);
@@ -26,8 +38,10 @@ class inscription extends CI_Controller {
             redirect(site_url().'article');
         }
         else{
-            var_dump("entrez le meme mot de passe");
-            //redirect(site_url().'inscription');
+            $this->session->set_flashdata('item', 'Veuillez entrer le même mot de passe !');
+            var_dump('mdp');
+            $this->index();
+            return;
         }
     }
 }

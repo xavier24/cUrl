@@ -4,7 +4,7 @@
         echo form_open('article/entrerURL',array('method'=>'post'));
         echo form_label("Entrez l'adresse du site",'url" class="entete"');
         ?><p>http://</p><?php
-        $urlInput = array('name'=>'url','id'=>'url');
+        $urlInput = array('name'=>'url','id'=>'url','class'=>'url');
         
         echo form_input($urlInput);
         echo form_submit('check" class="analyse','Analyser');
@@ -14,13 +14,13 @@
      <section id="connexion">
          <p>Bonjour <?php echo $nom_membre; ?></p>
         <h1 class="deconnex">
-            <?php echo anchor( 'member/deconnecter',"Se déconnecter",array('title'=>'Pour se déconnecter', 'hreflang'=>'fr' )); ?>
+            <?php echo anchor( 'member/deconnecter',"Se déconnecter",array('title'=>'Pour se déconnecter', 'hreflang'=>'fr' ,'class'=>'icon-off')); ?>
         </h1>
     </section>
 </header>
 <section id="corps">
     <section id="chargement" class="block">
-        <p>Recherche en cours...</p><img src="<?php echo site_url(); ?>web/images/ajax-loader(3).gif" />
+        <p>Recherche en cours...</p><img src="<?php echo site_url(); ?>web/images/ajax-loader.gif" />
     </section>
     <?php if(isset($url)){?>
         <section id="resultat" class="block">
@@ -31,7 +31,7 @@
                             <img class="resul_image" id="<?php echo $i; ?>" src="<?php echo $image[$i]; ?>" width="250"   />
                         <?php }?>
                     </figure>
-                    <a id="precedent" href="#">Précedent</a><a id="suivant" href="#">Suivant</a>
+                    <a id="precedent" href="#" class="icon-left-open">Précedent</a><a id="suivant" href="#" >Suivant<span class="icon-right-open"></span></a>
                 </section>
 
                 <section class="texte">
@@ -101,9 +101,9 @@
 <aside id="sidebar" class="block">
     <h1 class="entete">Mes liens</h1>
     <?php if(count($articles)){ ?>
-        <ul>
+        <ul class="icon-right-circle">
             <?php foreach(array_reverse($articles) as $article):?>
-                <li>
+                <li >
                     <a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a>
                     <a href="#article_<?php echo $article->url; ?>"><img src="<?php echo base_url();?>web/images/liste.png" /></a>
                 </li>
@@ -113,7 +113,4 @@
     else{ ?>
         <p>il n'y a pas d'article</p>
     <?php }?>
-</aside>
-<script src="<?php echo base_url();?>web/js/jquery.js"></script>
-<script src="<?php echo base_url();?>web/js/jq.js"></script>
-		 
+</aside>	 

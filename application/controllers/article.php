@@ -6,13 +6,11 @@
 
         public function __construct() {
             parent::__construct();
-            if(!$this->session->userdata('logged_in'))
-            {
+            if(!$this->session->userdata('logged_in')){
                 redirect('member');
             }
         }
-        public function index()
-        {
+        public function index(){
            $this->load->helper('form');
            $this->load->helper('url');
            $this->lister();
@@ -56,8 +54,7 @@
             curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
             curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $timeout);
             
-            if (preg_match('`^https://`i', $url))
-            {
+            if (preg_match('`^https://`i', $url)){
              // Ne pas vérifier la validité du certificat SSL
              curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
              curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -84,20 +81,20 @@
             curl_close($curl);
             
             //$this->analyser($resultat,$url);
-           if(!$resultat==false)
-           { 
+           if($resultat){ 
                 $data["correct"] = true;
                 $dom = new DOMDocument();
                 @$dom->loadHTML($resultat);
-                $data["val"] = 2;
                 $data["url"] = $url;
                 $data["title"] = "Ce site n'a communiqué aucun nom";
                 $data["h1"] = "Ce site n'a communiqué aucun titre général";
                 $data["meta"]= "Ce site n'a communiqué aucune description";
                 
                 $nodes = $dom->getElementsByTagName('title');
-                $data["title"] = utf8_decode($nodes->item(0)->nodeValue);
-
+                if(strlen($nodes->item(0)->nodeValue)>0){
+                    $data["title"] = utf8_decode($nodes->item(0)->nodeValue);
+                }
+                
                 $nodes = $dom->getElementsByTagName('meta');
                 foreach($nodes as $node){
                     if($node->getAttribute("name")==="description"){
@@ -107,20 +104,15 @@
                 
                 $nodes = $dom->getElementsByTagName('h1');
                 foreach($nodes as $node){
-                    if(isset($node))
-                    {
+                    if(isset($node) && strlen($nodes->item(0)->nodeValue)>0){
                         $data["h1"] = utf8_decode($nodes->item(0)->nodeValue);
                     }
                  }
                  
                 $data["image"][] = base_url()."/web/images/visuel-non-disponible.png";
-                
                 $nodes = $dom->getElementsByTagName('img');
-                
-                if(count($nodes))
-                {
-                   foreach($nodes as $node)
-                   {
+                if(count($nodes)){
+                   foreach($nodes as $node){
                       $image = $node->getAttribute("src");
                       $url_image = $this->rel2abs($image, $url);
                       $taille = getimagesize($url_image);
@@ -128,14 +120,12 @@
                          $data["image"][] = $url_image;
                       }
                    }
-                   if( count( $data["image"] ) > 1 )
-                   {
+                   if( count( $data["image"] ) > 1 ){
                       array_shift($data["image"]);
                    }
                 }
            }
-           else
-           {
+           else{
                $data["correct"] = false;
                $data["url"] = $url;
            }
@@ -224,8 +214,7 @@
             }
        }
        
-       public function rel2abs($rel, $base)
-       {
+       public function rel2abs($rel, $base){
             $path=null;
             $scheme="http";
             /* return if already absolute URL */

@@ -11,7 +11,12 @@
         <meta name="viewport" content="width=device-width">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
+        
+        <!-- CSS Fontello -->
+        
+        <link rel="stylesheet" href="<?php echo base_url(); ?>web/css/fontello-ie7.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>web/css/fontello.css">
+        
         <link rel="stylesheet" href="<?php echo base_url(); ?>web/css/normalize.css">
         <!--<link rel="stylesheet" type="text/css" href=" <?php //echo base_url(); ?>web/css/reset.css" media="screen" />-->
         <link rel="stylesheet" type="text/css" href=" <?php echo base_url().DIR_CSS; ?>" media="screen" />
@@ -23,9 +28,8 @@
         
         
         
-        
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php echo base_url(); ?>web/js/jquery-1.8.0.min.js"><\/script>')</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url(); ?>web/js/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="<?php echo base_url(); ?>web/js/plugins.js"></script>
         <script src="<?php echo base_url(); ?>web/js/main.js"></script>
 

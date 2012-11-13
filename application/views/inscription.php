@@ -8,7 +8,7 @@
         $emailInput = array('name'=>'email','id'=>'email');
         echo form_input($emailInput);
         echo '<br />';
-        echo form_label('Choisez votre pseudo','pseudo');
+        echo form_label('Entrez votre nom','pseudo');
         $speudoInput = array('name'=>'pseudo','id'=>'pseudo');
         echo form_input($speudoInput);
         echo '<br />';

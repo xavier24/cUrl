@@ -72,7 +72,7 @@
                 <section id="erreur">
                     <p>L'adresse "<?php echo $url; ?>"<?php echo $message; ?></p>
                     <?php if(isset($modifier)){ ?>
-                    <p class="bouton"><a href="#article_<?php echo $url; ?>" >L'afficher pour le modifier ?</a></p>
+                    <p class="bouton"><a href="#article_<?php echo $url; ?>" >Aller à cet article ?</a></p>
                     <?php } ?>
                 </section>
             <?php } ?>

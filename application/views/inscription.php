@@ -2,6 +2,7 @@
     <h1 class="entete">Créer mon compte</h1>
     
     <?php
+        echo validation_errors();
         echo form_open('inscription/inscrire',array('method'=>'post'));
         
         echo form_label('Entrez votre adresse email','email');
@@ -23,7 +24,7 @@
         if($message){?>
             <p class="erreur_inscription"><?php echo $message ?></p>
         <?php }
-        echo form_submit('check" class="connex','Je m\'inscrire');
+        echo form_submit('check" class="connex','Je m\'inscris');
         echo form_close();
     ?>
         <p><a class="inscription" href="<?php echo site_url(); ?>member">Annuler</a></p>

@@ -11,19 +11,24 @@ class inscription extends CI_Controller {
     }
     
     public function inscrire(){
+        $this->load->library('form_validation');
         $this->load->model('M_Inscription');
         $data['email'] = $this->input->post('email');
         $data['pseudo'] = $this->input->post('pseudo');
         $data['mdp'] = $this->input->post('mdp');
         $data['mdp2'] = $this->input->post('mdp2');
         
-        
-       if(strlen($data['pseudo'])<2){
-            $this->session->set_flashdata('item','Veuillez entrer un nom d\'au moins 2 caractères !');
+        $this->form_validation->set_rules('email', 'Entrez votre adresse email', 'required|valid_email');
+        if ($this->form_validation->run() == FALSE){
+            $this->session->set_flashdata('item','Veuillez entrer une mail valide !');
             redirect('inscription');
-        }
+        }        
         elseif($this->M_Inscription->verifier($data)){
             $this->session->set_flashdata('item','L\'adresse Email "'.$data['email'].'" est déjà associée à un compte !');
+            redirect('inscription');
+        }
+        elseif(strlen($data['pseudo'])<2){
+            $this->session->set_flashdata('item','Veuillez entrer un nom d\'au moins 2 caractères !');
             redirect('inscription');
         }
         elseif( strlen($data['mdp'])<5 ){
@@ -43,4 +48,4 @@ class inscription extends CI_Controller {
     }
 }
 
-?>
+

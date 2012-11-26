@@ -35,8 +35,8 @@
             if (!preg_match('`^https://|http://`i', $url)){
                $url = 'http://'.$url;
             }
-            if(preg_match('`\/$`i',$url)){
-                $url = preg_replace('`\/$`i','', $url);
+            if(!preg_match('`\/$`i',$url)){
+                $url = $url.'/';
             }
             $this->verifier($url);
             
@@ -143,7 +143,8 @@
            }
            else{
                $data["correct"] = false;
-               $data["url"] = $url.' n\'existe pas.';
+               $data["url"] = $url;
+               $data["message"] = 'n\'existe pas.';
            }
            $this->afficher($data);
         }

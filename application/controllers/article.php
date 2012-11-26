@@ -52,7 +52,6 @@
                 $data["url"] = $url ;
                 $data["message"] = ' se trouve déjà dans votre sélection d\'article.' ;
                 $data["modifier"] = true;
-                var_dump("deja dans la db");
                 $this->afficher($data);
                 return;
             }
@@ -114,7 +113,7 @@
                 
                 $nodes = $dom->getElementsByTagName('meta');
                 foreach($nodes as $node){
-                    if($node->getAttribute("name")==="description"){
+                    if($node->getAttribute("name")==="description" && strlen($node->getAttribute("content"))>0){
                         $data["meta"] =utf8_decode($node->getAttribute("content")); 
                     }
                 }

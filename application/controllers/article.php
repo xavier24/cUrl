@@ -31,6 +31,17 @@
             
             $this->load->helper('form');
             $url = $this->input->post('url');
+           
+            if (!preg_match('`^https://|http://`i', $url)){
+               $url = 'http://'.$url;
+            }
+            if(preg_match('`\/$`i',$url)){
+                $url = preg_replace('`\/$`i','', $url);
+            }
+            $this->verifier($url);
+            
+        }
+        public function verifier($url){
             
             $info_membre = $this->session->userdata('logged_in');
             $id_membre = $info_membre->membre_id;
@@ -45,13 +56,8 @@
                 $this->afficher($data);
                 return;
             }
-            
-            if (preg_match('`^https://|http://`i', $url)){
-               $this->cURL($url);
-            }
             else{
-               $url = 'http://'.$url;
-               $this->cURL($url);
+                $this->cURL($url);
             }
         }
        

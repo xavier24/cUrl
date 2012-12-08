@@ -28,7 +28,7 @@
                 <section class="image">
                     <figure>
                         <?php for($i=0;$i<count($image);$i++){ ?>
-                            <img class="resul_image" id="<?php echo $i; ?>" src="<?php echo $image[$i]; ?>" width="250"   />
+                            <img class="resul_image" id="<?php echo $i; ?>" src="<?php echo $image[$i]; ?>"   />
                         <?php }?>
                     </figure>
                     <a id="precedent" href="#" class="icon-left-open">Précedent</a><a id="suivant" href="#" >Suivant<span class="icon-right-open"></span></a>
@@ -85,7 +85,7 @@
             <article id="article_<?php echo $article->url; ?>">
                 <p><a class="delete" href="<?php echo site_url(); ?>article/delete/<?php echo $article->article_id ?>">supprimer</a></p>
                 <figure class="image">
-                    <img src="<?php echo $article->url_image; ?>" width="250"/>
+                    <img src="<?php echo $article->url_image; ?>" />
                 </figure>
                 <section class="texte">
                     <h1 ><a class="titre_article" href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a></h1>

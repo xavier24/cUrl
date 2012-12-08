@@ -85,17 +85,19 @@
             // sous forme de chaîne de caractères via curl_exec()
             // (directement affiché au navigateur client sinon) 
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            
-            
+    
             curl_setopt($curl, CURLOPT_COOKIESESSION, true);
            
             $resultat = curl_exec($curl);
             
             // Récupération du code HTTP retourné par la requête
             //$http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE); 
+           
+            //Récupère l'adresse effective de redirection 
+            $url = curl_getinfo($curl, CURLINFO_EFFECTIVE_URL);
             
             curl_close($curl);
-            
+                  
             //$this->analyser($resultat,$url);
            if($resultat){ 
                 $data["correct"] = true;
@@ -106,16 +108,31 @@
                 $data["h1"] = "Ce site n'a communiqué aucun titre général";
                 $data["meta"]= "Ce site n'a communiqué aucune description";
                 
-                $nodes = $dom->getElementsByTagName('title');
-                if(strlen($nodes->item(0)->nodeValue)>0){
-                    $data["title"] = utf8_decode($nodes->item(0)->nodeValue);
-                }
-                
                 $nodes = $dom->getElementsByTagName('meta');
                 foreach($nodes as $node){
-                    if($node->getAttribute("name")==="description" && strlen($node->getAttribute("content"))>0){
-                        $data["meta"] =utf8_decode($node->getAttribute("content")); 
+                    if($node->getAttribute('charset')==="utf-8"){
+                        $utf8 = True;
                     }
+                }
+                foreach($nodes as $node){
+                    if($node->getAttribute("name")==="description" && strlen($node->getAttribute("content"))>0){
+                        if(isset($utf8)){
+                           $data["meta"] =utf8_decode($node->getAttribute("content"));  
+                        }
+                        else{
+                           $data["meta"] =$node->getAttribute("content");
+                        }
+                    }
+                }
+                
+                $nodes = $dom->getElementsByTagName('title');
+                if(strlen($nodes->item(0)->nodeValue)>0){
+                   if(isset($utf8)){
+                      $data["title"] = utf8_decode($nodes->item(0)->nodeValue); 
+                   } 
+                   else{
+                      $data["title"] = $nodes->item(0)->nodeValue;
+                   }
                 }
                 
                 $nodes = $dom->getElementsByTagName('h1');
@@ -132,7 +149,7 @@
                       $image = $node->getAttribute("src");
                       $url_image = $this->rel2abs($image, $url);
                       $taille = getimagesize($url_image);
-                      if($taille[0]>70){
+                      if( ($taille[0]>70 && $taille[1]>10 )||($taille[0]>10 && $taille[1]>70) ){
                          $data["image"][] = $url_image;
                       }
                    }

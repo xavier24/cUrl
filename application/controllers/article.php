@@ -31,7 +31,7 @@
             
             $this->load->helper('form');
             $url = $this->input->post('url');
-           
+          
             if (!preg_match('`^https://|http://`i', $url)){
                $url = 'http://'.$url;
             }

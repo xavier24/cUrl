@@ -19,23 +19,23 @@
   margin-right: 0.2em;
   text-align: center;
   opacity: 0.8;
-/* Uncomment for 3D effect */
-/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-/* fix buttons height */
+/* fix buttons height, for twitter bootstrap */
   line-height: 1em;
+/* Animation center compensation - magrins should be symmetric */
+/* remove if not needed */
+  margin-left: 0.2em;
 /* you can be more comfortable with increased icons size */
 /* font-size: 120%; */
+/* Uncomment for 3D effect */
+/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-right-dir:before { content: '\25b8'; } /* 'â–¸' */
-.icon-down-dir:before { content: '\25be'; } /* 'â–¾' */
-.icon-pencil:before { content: '\270e'; } /* 'âœŽ' */
-.icon-right-circle li:before { content: '\e4a2'; } /* 'î’¢' */
-.icon-down-circle li:before { content: '\e4a4'; } /* 'î’¤' */
-.icon-trash:before { content: '\e729'; } /* 'îœ©' */
-.icon-left-open:before { content: '\e75d'; } /* 'î' */
-.icon-right-open:before { content: '\e75e'; } /* 'îž' */
-.icon-off:before { content: '\e78e'; } /* 'îžŽ' */
-.icon-globe:before { content: 'ðŸŒŽ'; } /* '\1f30e' */
-.icon-floppy:before { content: 'ðŸ’¾'; } /* '\1f4be' */
-.icon-search:before { content: 'ðŸ”'; } /* '\1f50d' */
+.icon-pencil:before { content: '\270e'; } /* '✎' */
+.icon-right-circle:before { content: '\e4a2'; } /* '' */
+.icon-trash:before { content: '\e729'; } /* '' */
+.icon-down-open:before { content: '\e75c'; } /* '' */
+.icon-up-open:before { content: '\e75f'; } /* '' */
+.icon-off:before { content: '\e78e'; } /* '' */
+.icon-globe:before { content: '🌎'; } /* '\1f30e' */
+.icon-floppy:before { content: '💾'; } /* '\1f4be' */
+.icon-search:before { content: '🔍'; } /* '\1f50d' */

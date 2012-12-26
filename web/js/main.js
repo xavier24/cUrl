@@ -15,13 +15,24 @@ $(function(){
         });
         
         
-        $('#formulaire input:submit').on('click',function(){
+        $('#formulaire :submit').on('click',function(){
           $('#chargement').css("display","block");
           if('#resultat'){
              $('#resultat').hide(); 
           }
         });
 	
+        $('#sidebar h1').on('click',function(){
+           $('#sidebar ul').css("display","block");
+           $('#sidebar p').removeClass("icon-down-open").addClass("icon-up-open"); 
+        });
+        $('#sidebar .icon-down-open').on('click',function(){
+           $('#sidebar ul').css("display","none");
+           $('#sidebar p').removeClass("icon-up-open").addClass("icon-down-open");
+          
+        });
+        
+        
 	var $figs = $('#resultat .resul_image');
 	$figs.not(":first").hide();
         

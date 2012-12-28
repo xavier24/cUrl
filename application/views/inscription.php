@@ -1,3 +1,6 @@
+<header id="header">
+    <h1>MyList</h1>
+</header>
 <section id="inscription" class="block">
     <h1 class="entete">Créer mon compte</h1>
     
@@ -9,7 +12,7 @@
         $emailInput = array('name'=>'email','id'=>'email');
         echo form_input($emailInput);
         echo '<br />';
-        echo form_label('Entrez votre nom','pseudo');
+        echo form_label('Entrez votre nom ou pseudo','pseudo');
         $speudoInput = array('name'=>'pseudo','id'=>'pseudo');
         echo form_input($speudoInput);
         echo '<br />';

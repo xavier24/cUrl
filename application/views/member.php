@@ -1,16 +1,19 @@
+<header id="header">
+    <h1>MyList</h1>
+</header>
 <section id="member" class="block">
     <h1 class="entete">Connexion à votre compte</h1>
     <?php if(isset($connexion)){ ?>
         <h3><?php echo $connexion ?></h3>
         <?php }
         echo form_open('member/login',array('method'=>'post'));
-        echo form_label('adresse email','email');
+        echo form_label('Adresse email','email');
         $emailInput = array('name'=>'email','id'=>'email');
         
         echo form_input($emailInput);
         echo '<br />';
-        echo form_label('mot de passe','mdp');
-        $mdpInput = array('name'=>'mdp','id'=>'pass');
+        echo form_label('Mot de passe','mdp');
+        $mdpInput = array('name'=>'mdp','id'=>'mdp');
         echo form_password($mdpInput);
         echo '<br />';
         echo form_submit('check" class="connex','Connexion');

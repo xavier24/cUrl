@@ -1,15 +1,25 @@
-<header id="formulaire" class="block"> 
-    <section id="connexion">
+<header id="header">
+    <h1>MyList</h1>
+    <div id="connexion" class="mobile_cache">
         <p>Bonjour <?php echo $nom_membre; ?></p>
-        <h1 class="deconnex">
-            <?php echo anchor( 'member/deconnecter',"Se déconnecter",array('title'=>'Pour se déconnecter', 'hreflang'=>'fr' ,'class'=>'icon-off')); ?>
-        </h1>
-    </section>
-    <section id="recherche">
+    </div>
+    <h2 class="deconnex bouton_header">
+       <?php echo anchor( 'member/deconnecter',"Se déconnecter",array('title'=>'Pour se déconnecter', 'hreflang'=>'fr' ,'class'=>'icon-off')); ?>
+    </h2>
+    <nav class="bouton_header">
+        <img src="<?php echo site_url(); ?>web/images/menu.png" />
+        <ul>
+            <li></li>
+        </ul>
+    </nav>
+</header>
+<section id="formulaire" class="block"> 
+    
+    <div id="recherche">
         <?php 
         echo form_open('article/entrerURL',array('method'=>'post'));
-        echo form_label("Entrez l'adresse du site",'url" class="entete"');
-        ?><p>http://</p><?php
+        echo '<h1 class="entete cache">Entrez l\'adresse du site</h1>';
+        echo form_label("http://",'url');
         $urlInput = array('name'=>'url','id'=>'url','class'=>'url');
         
         echo form_input($urlInput);
@@ -17,8 +27,8 @@
         ?><button type="submit" name="check" class="icon-search analyse"></button>
        <?php echo form_close();
      ?>
-    </section>   
-</header>
+    </div>   
+</section>
 <section id="chargement" class="block">
     <p>Recherche en cours...</p><img src="<?php echo site_url(); ?>web/images/ajax-loader.gif" />
 </section>

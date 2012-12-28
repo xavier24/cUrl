@@ -1,33 +1,36 @@
 <header id="header">
     <h1>MyList</h1>
-    <div id="connexion" class="mobile_cache">
+    <div id="connecte" class="mobile_cache">
         <p>Bonjour <?php echo $nom_membre; ?></p>
     </div>
     <h2 class="deconnex bouton_header">
        <?php echo anchor( 'member/deconnecter',"Se déconnecter",array('title'=>'Pour se déconnecter', 'hreflang'=>'fr' ,'class'=>'icon-off')); ?>
     </h2>
-    <nav class="bouton_header">
+    <div id="navigation" class="bouton_header">
         <img src="<?php echo site_url(); ?>web/images/menu.png" />
         <ul>
             <li></li>
         </ul>
-    </nav>
+    </div>
 </header>
-<section id="formulaire" class="block"> 
-    
-    <div id="recherche">
-        <?php 
-        echo form_open('article/entrerURL',array('method'=>'post'));
-        echo '<h1 class="entete cache">Entrez l\'adresse du site</h1>';
-        echo form_label("http://",'url');
-        $urlInput = array('name'=>'url','id'=>'url','class'=>'url');
-        
-        echo form_input($urlInput);
-        echo form_submit('check" class="analyse','Analyser');
-        ?><button type="submit" name="check" class="icon-search analyse"></button>
-       <?php echo form_close();
-     ?>
-    </div>   
+<section id="recherche" class="block">
+    <h1 class="entete mobile_cache">Entrez l'adresse du site</h1> 
+    <?php 
+    echo form_open('article/entrerURL',array('method'=>'post'));
+    echo form_label("http://",'url');
+    $urlInput = array('name'=>'url','id'=>'url','class'=>'url');
+
+    echo form_input($urlInput);
+    $data = array(
+    'name' => 'check',
+    'id' => 'button',
+    'class'=> 'analyse icon-search',
+    'value' => 'true',
+    'type' => 'submit',
+    'content' => ' Analyser'
+    );
+    echo form_button($data);
+    echo form_close(); ?> 
 </section>
 <section id="chargement" class="block">
     <p>Recherche en cours...</p><img src="<?php echo site_url(); ?>web/images/ajax-loader.gif" />

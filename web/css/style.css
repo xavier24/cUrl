@@ -7,7 +7,7 @@ html{
 }
 body{
     max-width:900px;
-    min-width: 250px;
+    min-width: 100px;
     height: 100%;
     margin:0 auto;
     background-color: transparent;
@@ -33,7 +33,7 @@ body{
     padding-bottom: 30px;
 }
 #member form, #inscription form{
-        padding: 20px 30px;
+    padding: 20px 30px;
 }
 #member label, #inscription label{
     background-color: darkred;
@@ -57,8 +57,78 @@ body{
     box-shadow:-1px -1px 0 rgba(65,15,0,0.3),1px 1px 0 rgba(255,255,255,0.5);
     border:none;
 }
+#connecte{
+    color:white;
+}
+#recherche{
+    background-color: #BBB;
+    background-image: url('../images/cardboard_flat.png');
+    padding: 6px 7px 7px
+}
+#recherche form{
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: -1px -1px 0 1px #999999, 1px 0 0 1px #EEEEEE, 0 0 2px 1px #AAAAAA inset;
+    position: relative;
+    margin: 0 auto;
+    max-width: 500px;
+    min-width: 100px;
+}
+#recherche label{
+    display:inline-block;
+    margin-top: 1px;
+    -moz-border-radius: 8px 0 0 8px;
+    -webkit-border-radius: 8px 0 0 8px;
+    border-radius: 8px 0 0 8px;
+    background-color: #222222;
+    color: orange;
+    position: absolute;
+    left: 1px;
+}
+#url{
+    width: 100%;
+    border: none;
+    padding:2px;
+    border-top:1px solid #aaa;
+    margin-bottom: 2px;
+}
+#chargement,#erreur{
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 20px;
+    background-color: #fff;
+    background-color: rgba(250,250,250,0.5);
+    
+}
+#chargement{
+    display:none;
+}
+.analyse{
+    background: #222;
+    -moz-border-radius: 0px 8px 8px 0px;
+    -webkit-border-radius: 0px 8px 8px 0px;
+    border-radius: 0px 8px 8px 0px;
+    color: orange;
+    text-decoration: none;
+    border:none;
+    cursor:pointer;
+    font-family: Calibri, "Myriad Pro", sans-serif;
+    position: absolute;
+    top:2px;
+    right: 2px;
+}
 a{
     text-decoration: none;
+}
+.bouton_header:hover, .bouton_header:hover:active{
+    border:1px solid black;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    -moz-box-shadow: 0 0 2px #000;
+    -webkit-box-shadow: 0 0 2px #000;
+    box-shadow: 0 0 2px #000;
+    background-color: #333; color:red;
 }
 .connex{
     background: #111;
@@ -83,11 +153,18 @@ a{
     padding:5px;
     cursor: pointer;
  }
- .inscription:hover{
-     background-color: #222;
-     border:1px solid black;     
- }
- #modifier a:hover, .add:hover, .connex:hover, .bouton a:hover, .analyse:hover{
+.inscription:hover{
+    background-color: #222;
+    border:1px solid black;     
+}
+.erreur_inscription{
+    color:red;
+    font-size:1.2em;
+    background-color: black;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+#modifier a:hover, .add:hover, .connex:hover, .bouton a:hover, .analyse:hover{
     background-color: #333;
     color:#FF9326;
     -moz-box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.7);
@@ -128,28 +205,54 @@ a{
         height: 42px;
         margin-top:1px;
     }
-   
-    
+    .deconnex{
+        position:absolute;
+        right:35px;
+        top:7px;
+        font-size:1.5em;
+        padding:5px;
+    }
+    .deconnex a{
+        color:orange;
+    }
+    .deconnex a:hover{
+        color:red;
+    }
+    #navigation{
+        display:none;
+    }
+    #recherche form{
+        padding:1px 111px 1px 71px;
+    }
+    #recherche label{
+        height: 34px;
+        font-size:1.2em;
+        font-weight: bold;
+        padding: 4px 11px;
+        line-height: 30px;
+    }
+    #url{
+        height: 38px;
+        font-size: 1.5em;
+    }
+    .analyse{
+        line-height: 1;
+        padding: 4px 5px 7px;
+        -font-weight: bold;
+        vertical-align: top;
+        height: 42px;
+        font-size: 1.2em;
+    }
 }
 /*---Tablette et plus petit---*/
 @media only screen and (max-width:767px), only screen and (max-device-width: 767px){
-    #header nav{
+    #navigation{
         position: absolute;
         top: 5px;
         right: 5px;
         width:35px;
         height:28px;
         padding-top:7px;
-    }
-    .bouton_header:hover, .bouton_header:hover:active{
-        border:1px solid black;
-        -moz-border-radius:5px;
-        -webkit-border-radius:5px;
-        border-radius:5px;
-        -moz-box-shadow: 0 0 2px #000;
-        -webkit-box-shadow: 0 0 2px #000;
-        box-shadow: 0 0 2px #000;
-        background-color: #333; color:red;
     }
     .deconnex{
         position:absolute;
@@ -181,18 +284,36 @@ a{
          -moz-box-sizing:border-box; /* Firefox */
          -webkit-box-sizing:border-box; /* Safari */ 
          box-sizing:border-box; 
-     }
-     #member input, #inscription input {
+    }
+    #member input, #inscription input {
         width: 100%;
         margin-bottom: 30px;
     }
-    
+    #recherche form{
+        padding: 1px 36px 2px 46px;
+    }
+    #recherche label{
+       font-size: 1em;
+       font-weight: normal;
+       height: 20px;
+       padding:6px 3px 3px 4px;
+    }
+    #url{
+        height:24px;
+    }
+    .analyse{
+        height: 29px;
+    }
 }
 
 /*---tablette---*/    
 @media only screen and (min-width:480px) and (max-width:767px), only screen and (min-device-width: 480px)and (max-device-width:767px){/*------tablette-----*/
     html{
         background: url("../images/fond-tablette.jpg") top center no-repeat black;
+    }
+    .analyse{
+       font-size: 1em;
+       padding-bottom:4px;
     }
 }
 /*---plus grand que mobile---*/
@@ -205,21 +326,22 @@ a{
     html{
         background: url("../images/fond-phone.jpg") top center no-repeat black;
     }
-    body{
-         -moz-transition: all 0.3s linear;
-         -webkit-transition: all 0.3s linear;
-         -o-transition: all 0.3s linear;
-         transition: all 0.3s linear;
-         margin:0;
-         height: 100%;
+    
+    .analyse{
+       font-size: 1.2em;
+       padding: 0;
+       width: 30px;
+       overflow: hidden;
+       line-height: 1.6em;
+       word-wrap: break-word;
+    }
+    .mobile_cache{
+        display:none;
     }
     
-   /*//////////////////////////////////////
-   ////////////////CLASS///////////////////
-   //////////////////////////////////////*/
-     .mobile_cache{
-     display:none;
-     }
-
-
+}
+@media only screen and (max-width:270px), only screen and (max-device-width: 270px){/*------mobile-----*/
+    #header h1{
+        padding-right: 70px;
+    }
 }

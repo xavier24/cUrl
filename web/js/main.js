@@ -15,7 +15,7 @@ $(function(){
         });
         
         
-        $('#formulaire :submit').on('click',function(){
+        $('#recherche :submit').on('click',function(){
           $('#chargement').css("display","block");
           if('#resultat'){
              $('#resultat').hide(); 

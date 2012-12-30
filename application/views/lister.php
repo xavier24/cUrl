@@ -19,7 +19,6 @@
     echo form_open('article/entrerURL',array('method'=>'post'));
     echo form_label("http://",'url');
     $urlInput = array('name'=>'url','id'=>'url','class'=>'url');
-
     echo form_input($urlInput);
     $data = array(
     'name' => 'check',
@@ -32,63 +31,76 @@
     echo form_button($data);
     echo form_close(); ?> 
 </section>
-<section id="chargement" class="block">
+<div id="chargement" class="block">
     <p>Recherche en cours...</p><img src="<?php echo site_url(); ?>web/images/ajax-loader.gif" />
-</section>
+</div>
 <?php if(isset($url)){?>
-    <section id="resultat" class="block">
-        <?php if($correct==true){?>
-            <section class="image">
-                <figure>
+    <?php if($correct==true){?>
+        <section id="resultat" class="block">
+            <h1 class="cache">Résultat de la recherche</h1>
+            <div id="afficher_images">
+                <div id="images">
+                    <div>
                     <?php for($i=0;$i<count($image);$i++){ ?>
                         <img class="resul_image" id="<?php echo $i; ?>" src="<?php echo $image[$i]; ?>"   />
                     <?php }?>
-                </figure>
-                <a id="precedent" href="#" class="icon-left-open">Précedent</a><a id="suivant" href="#" >Suivant<span class="icon-right-open"></span></a>
-            </section>
+                    </div>
+                </div>
+                <a id="precedent" href="#" class="icon-left-open" title="image précédente"></a>
+                <a id="suivant" href="#" ><span class="icon-right-open-1" title="image suivante"></span></a>
+            </div>
 
-            <section class="texte">
-                <h1 class="titre"><?php echo $url; ?></h1>
-                <h2 id="resul_titre" class="resul_texte bouton" ><a href="<?php echo $url; ?>" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></h2>
-                <p id="resul_h1" class="resul_texte" ><?php echo $h1; ?></p>
-                <p id="resul_meta" class="resul_texte" ><?php echo $meta; ?></p>
-                <p id="modifier" class="resul_texte"><a href="#">Modifier</a></p>
+            <div id="afficher_texte">
+                <h1 class="titre resul_cache"><?php echo $url; ?></h1>
+                <h2 id="resul_titre" class="bouton resul_cache" ><a href="<?php echo $url; ?>"class="bouton" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></h2>
+                <p id="resul_h1" class="resul_texte resul_cache" ><?php echo $h1; ?></p>
+                <p id="resul_meta" class="resul_texte resul_cache" ><?php echo $meta; ?></p>
+                <button id="modifier" class="resul_action resul_cache icon-pencil">Modifier</button>
                 <?php 
                     echo form_open('article/enregistrer',array('method'=>'post'));
-                    echo form_label("Adresse du site",'url');
-                    $ajout_url= array('value'=>$url,'class'=>'input_texte', 'name'=>'url','id'=>'ajout_url');
+                    //echo form_label("Adresse du site",'url');
+                    $ajout_url= array('value'=>$url,'class'=>'input_texte input_titre', 'name'=>'url','id'=>'ajout_url');
                     echo form_input($ajout_url);
 
-                    echo form_label("Nom du site",'title');
-                    $ajout_title= array('value'=>$title,'class'=>'input_texte', 'name'=>'title','id'=>'ajout_title');
+                    //echo form_label("Nom du site",'title');
+                    $ajout_title= array('value'=>$title,'class'=>'input_texte input_result_titre', 'name'=>'title','id'=>'ajout_title');
                     echo form_input($ajout_title);
 
-                    echo form_label("Titre de la page",'h1');
-                    $ajout_h1= array('value'=>$h1,'class'=>'input_texte','name'=>'h1','id'=>'ajout_h1');
+                    //echo form_label("Titre de la page",'h1');
+                    $ajout_h1= array('value'=>$h1,'class'=>'input_texte input_result_texte','name'=>'h1','id'=>'ajout_h1');
                     echo form_input($ajout_h1);
 
-                    echo form_label("Description de la page",'meta');
-                    $ajout_meta= array('value'=>$meta,'class'=>'input_texte', 'name'=>'meta','id'=>'ajout_meta');
+                    //echo form_label("Description de la page",'meta');
+                    $ajout_meta= array('value'=>$meta,'class'=>'input_texte input_result_texte', 'name'=>'meta','id'=>'ajout_meta');
                     echo form_textarea($ajout_meta);
 
-                    echo form_label("Entrez l'adresse de l'image que vous desirez",'image');
+                    //echo form_label("Entrez l'adresse de l'image que vous desirez",'image');
                     $ajout_image=array('value'=> $image[0] ,'class'=>'input_texte', 'name'=>'image','id'=>'ajout_image');
                     echo form_input($ajout_image);
-
-                    echo form_submit('check" class="add','Ajouter');
+                    
+                    $data = array(
+                        'name' => 'check',
+                        'id' => 'ajouter',
+                        'class'=> 'resul_action icon-floppy',
+                        'value' => 'true',
+                        'type' => 'submit',
+                        'content' => ' Ajouter'
+                    );
+                    echo form_button($data);
                     echo form_close();
                 ?>
-            </section>
-        <?php } 
-        else{?>
-            <section id="erreur">
-                <p>L'adresse "<?php echo $url; ?>"<?php echo $message; ?></p>
-                <?php if(isset($modifier)){ ?>
-                <p class="bouton"><a href="#article_<?php echo $url; ?>" >Aller à cet article ?</a></p>
-                <?php } ?>
-            </section>
-        <?php } ?>
-    </section>
+            </div>
+            <hr />
+        </section>
+    <?php } 
+    else{?>
+        <section id="erreur">
+            <p>L'adresse "<?php echo $url; ?>"<?php echo $message; ?></p>
+            <?php if(isset($modifier)){ ?>
+            <p class="bouton"><a href="#article_<?php echo $url; ?>" >Aller à cet article ?</a></p>
+            <?php } ?>
+        </section>
+    <?php } ?>
 <?php } ?>
 <aside id="sidebar" class="block">
     <h1 class="entete">Mes liens</h1>

@@ -17,8 +17,9 @@ $(function(){
         
         $('#recherche :submit').on('click',function(){
           $('#chargement').css("display","block");
-          if('#resultat'){
-             $('#resultat').hide(); 
+          if('#resultat'||'#erreur'){
+             $('#resultat').hide();
+             $('#erreur').hide();
           }
         });
 	
@@ -68,10 +69,9 @@ $(function(){
         });
         
         $("#modifier").on("click",function(){
-                console.log('jglkg');
                 $(".input_texte").css("display","block");
                 $("#resultat label").css("display","block");
-                $(".resul_texte").css("display","none");
+                $(".resul_cache").css("display","none");
             
         });
 

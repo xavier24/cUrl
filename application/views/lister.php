@@ -1,19 +1,13 @@
 <header id="header">
-    <h1>MyList</h1>
+    <h1><a href="<?php echo site_url(); ?>">MyList</a></h1>
     <div id="connecte" class="mobile_cache">
         <p>Bonjour <?php echo $nom_membre; ?></p>
     </div>
     <h2 class="deconnex bouton_header">
        <?php echo anchor( 'member/deconnecter',"Se déconnecter",array('title'=>'Pour se déconnecter', 'hreflang'=>'fr' ,'class'=>'icon-off')); ?>
     </h2>
-    <div id="navigation" class="bouton_header">
-        <img src="<?php echo site_url(); ?>web/images/menu.png" />
-        <ul>
-            <li></li>
-        </ul>
-    </div>
 </header>
-<section id="recherche" class="block">
+<section id="recherche">
     <h1 class="entete mobile_cache">Entrez l'adresse du site</h1> 
     <?php 
     echo form_open('article/entrerURL',array('method'=>'post'));
@@ -31,15 +25,15 @@
     echo form_button($data);
     echo form_close(); ?> 
 </section>
-<div id="chargement" class="block">
+<div id="chargement">
     <p>Recherche en cours...</p><img src="<?php echo site_url(); ?>web/images/ajax-loader.gif" />
 </div>
 <?php if(isset($url)){?>
     <?php if($correct==true){?>
-        <section id="resultat" class="block">
+        <section id="resultat">
             <h1 class="cache">Résultat de la recherche</h1>
-            <div id="afficher_images">
-                <div id="images">
+            <div class="afficher_images">
+                <div class="images">
                     <div>
                     <?php for($i=0;$i<count($image);$i++){ ?>
                         <img class="resul_image" id="<?php echo $i; ?>" src="<?php echo $image[$i]; ?>"   />
@@ -50,7 +44,7 @@
                 <a id="suivant" href="#" ><span class="icon-right-open-1" title="image suivante"></span></a>
             </div>
 
-            <div id="afficher_texte">
+            <div class="afficher_texte">
                 <h1 class="titre resul_cache"><?php echo $url; ?></h1>
                 <h2 id="resul_titre" class="bouton resul_cache" ><a href="<?php echo $url; ?>"class="bouton" title="Aller sur <?php echo $url; ?>"><?php echo $title; ?></a></h2>
                 <p id="resul_h1" class="resul_texte resul_cache" ><?php echo $h1; ?></p>
@@ -102,42 +96,38 @@
         </section>
     <?php } ?>
 <?php } ?>
-<aside id="sidebar" class="block">
-    <h1 class="entete">Mes liens</h1>
-    <?php if(count($articles)){ ?>
-        <ul>
-            <?php foreach(array_reverse($articles) as $article):?>
-                <li class="icon-right-circle">
-                    <a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a>
-                    <a href="#article_<?php echo $article->url; ?>"><img src="<?php echo base_url();?>web/images/liste.png" /></a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php }
-    else{ ?>
-        <p>il n'y a pas d'article</p>
-    <?php }?>
-    <p class="icon-down-open"></p>
-</aside>
 <section id="corps">
     
-    <section id="articles" class="block">
+    <section id="articles">
         <h1 class="entete">Articles</h1>
         <?php if(count($articles)){ ?>
             <?php foreach(array_reverse($articles) as $article):?>
-            <article id="article_<?php echo $article->url; ?>">
-                <p><a class="delete" href="<?php echo site_url(); ?>article/delete/<?php echo $article->article_id ?>">supprimer</a></p>
-                <figure class="image">
-                    <img src="<?php echo $article->url_image; ?>" />
-                </figure>
-                <section class="texte">
-                    <h1 ><a class="titre_article" href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a></h1>
-                    <h2><?php echo $article->h1; ?></h2>
-                    <p><?php echo $article->texte; ?></p>
-                </section>
-            </article>
-            <?php endforeach; ?>
-        <?php }
+                <div class="article">
+                    <div class="liste">
+                        <p><a class="delete icon-trash" href="<?php echo site_url(); ?>article/delete/<?php echo $article->article_id ?>">supprimer</a></p>
+                        <a href="<?php echo $article->url; ?>"><p class="icon-globe bouton_article adresse"><?php echo $article->title; ?></p></a>
+                        <a href="#article_<?php echo $article->url; ?>"><p class="bouton_article icone_article"><span></span></p></a>
+                        <p>Ajouté le <?php echo $article->date; ?></p>
+                    </div>
+                    <article id="article_<?php echo $article->url; ?>" class="article_texte">
+                        <div class="afficher_images">
+                            <div class="images">
+                                <div>
+                                    <img src="<?php echo $article->url_image; ?>" />
+                                </div>
+                            </div>
+                        </div>
+                        <section class="afficher_texte">
+                            <h1 class="bouton"><a href="<?php echo $article->url; ?>"><?php echo $article->title; ?></a></h1>
+                            <h2 class="resul_texte"><?php echo $article->h1; ?></h2>
+                            <p class="resul_texte"><?php echo $article->texte; ?></p>
+                        </section>
+                    <hr />
+                    </article>
+                    
+                </div>
+            <?php endforeach;         
+        }
         else{ ?>
             <p>il n'y a pas d'article</p>
     <?php }

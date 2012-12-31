@@ -63,7 +63,8 @@ body{
 #recherche{
     background-color: #BBB;
     background-image: url('../images/cardboard_flat.png');
-    padding: 6px 7px 7px
+    padding: 6px 7px 7px;
+    margin-bottom:10px;
 }
 #recherche form{
     border-radius: 10px 10px 10px 10px;
@@ -91,8 +92,8 @@ body{
     border-top:1px solid #aaa;
     margin-bottom: 2px;
 }
-#chargement,#erreur,#resultat{
-    margin: 10px auto;
+#chargement,#erreur,#resultat,.article_texte{
+    margin: 0 auto;
     text-align: center;
     font-size: 1.2em;
     padding: 20px;
@@ -106,7 +107,7 @@ body{
     position: relative;
     text-align: left;
 }
-#afficher_images{
+.afficher_images{
     background-color: white;
     border:5px solid #ddd;
     -moz-border-radius: 10px;
@@ -115,11 +116,11 @@ body{
     position: relative;
     -overflow: hidden;
     }
-#images{
+.images{
     overflow: hidden;
     height: 100%;
 }   
-#images div{
+.images div{
     display: table-cell;
     height: 200px;
     text-align: center;
@@ -138,7 +139,7 @@ body{
 #precedent:hover, #suivant:hover ,#precedent:active, #suivant:active {
     color: orange;
 }
-#afficher_texte{
+.afficher_texte{
     border:2px solid #fff;
     text-align: center;
     background-color: rgba(255,255,255,0.5);
@@ -146,16 +147,13 @@ body{
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
-#resultat hr{
+hr{
     clear: both;
     border:none;
 }
 #modifier{
     right: 120px;
 }
-
-
-
 .analyse{
     background: #222;
     -moz-border-radius: 0px 8px 8px 0px;
@@ -172,6 +170,7 @@ body{
 }
 a{
     text-decoration: none;
+    color: white;
 }
 .bouton_header:hover, .bouton_header:active{
     border:1px solid black;
@@ -232,7 +231,6 @@ a{
     font-size: 2em;
     color:white;
     text-shadow: 0px 1px 2px #AAAAAA, 0px 1px 2px #000000, 1px 1px 1px #AAA;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));
 }
 .bouton{
     font-size:1.2em;
@@ -301,6 +299,64 @@ a{
     font-weight: bold;
     margin-bottom: 5px;
 }
+.article{
+    position: relative;
+}
+.liste{
+    background-color: #720505;
+    background-color: rgba(200,0,0,0.4);
+    color: white;
+    padding:10px 120px 10px 20px;
+    border-top:3px solid #320000;
+    border-bottom:2px solid white;
+}
+.liste a{
+    color:orange;
+}
+.adresse{
+    padding:5px;
+    margin-bottom: 5px;
+}
+.delete{    
+    background: #4E0102;
+    background-color: rgba(0,0,0,0.3);
+    -moz-border-radius: 0px 0px 2px 12px;
+    -webkit-border-radius: 0px 0px 2px 12px;
+    border-radius: 0px 0px 2px 12px;
+    -moz-box-shadow: 0px 1px 0 #999,-1px 1px 0 #000;
+    -webkit-box-shadow: 0px 1px 0 #999,-1px 1px 0 #000;
+    box-shadow: 0px 1px 0 #999,-1px 1px 0 #000;
+    color: white;   
+    position: absolute;
+    right:0;
+    text-decoration: none;
+    top: 0;
+    font-family: Calibri, "Myriad Pro", sans-serif;
+}
+.delete:hover, .delete:active{
+    color:orange;
+    background: #2D0101;
+    background-color: rgba(0,0,0,0.6);
+}
+.lien_supprime{
+    color:black;
+    background-color: white;
+}
+.article_texte{
+    border-bottom: 5px solid white;
+}
+.bouton_article:hover, bouton_article:active{
+    padding-left: 6px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    -moz-box-shadow: 0px 1px 0 #999,-1px 1px 0 #000;
+    -webkit-box-shadow: 0px 1px 0 #999,-1px 1px 0 #000;
+    box-shadow: 0px 1px 0 #999,-1px 1px 0 #000;
+    background: #4E0102;
+    background-color: rgba(0,0,0,0.3);
+    color:white;
+}
 .cache{
     display: none;
 }
@@ -308,7 +364,7 @@ a{
 /*---plus grand que tablette---*/
 @media only screen and (min-width:768px){
     html{
-        background: url("../images/fond.jpg") top center no-repeat black;
+        background: url("../images/fond.jpg") top center repeat-y black;
     }
     #member label{
     line-height: 33px;
@@ -432,7 +488,7 @@ a{
 /*---tablette---*/    
 @media only screen and (min-width:480px) and (max-width:767px), only screen and (min-device-width: 480px)and (max-device-width:767px){/*------tablette-----*/
     html{
-        background: url("../images/fond-tablette.jpg") top center no-repeat black;
+        background: url("../images/fond-tablette.jpg") top center repeat-y black;
     }
     .analyse{
        font-size: 1em;
@@ -441,7 +497,7 @@ a{
 }
 /*---plus grand que petite tablette---*/
 @media only screen and (min-width:600px){
-    #afficher_images{
+    .afficher_images{
         width:200px;
         height: 200px;
         float: left;
@@ -462,7 +518,7 @@ a{
     #suivant{
         right: -30px;
     }
-    #afficher_texte{
+    .afficher_texte{
         margin-left: 270px;
         padding:20px 30px ;
     }
@@ -488,11 +544,11 @@ a{
 }
 /*---plus petit que petite tablette---*/
 @media only screen and (max-width:600px){
-    #afficher_images{
+    .afficher_images{
         margin:0 10px;
         height: 150px;
     }
-    #images div{
+    .images div{
         height: 150px;
         width: 600px;
     }
@@ -510,7 +566,7 @@ a{
     #suivant{
         right: -22px;
     }
-    #afficher_texte{
+    .afficher_texte{
         padding:10px 20px ;
         margin-top: 15px;
     }
@@ -550,13 +606,41 @@ a{
         padding-left: 0;
     }
 }
-
+/*---plus grand que mobile*/
+@media only screen and (min-width:480px){
+    .liste{
+        min-height: 80px;
+    }
+    .delete{    
+        line-height: 1.5em;
+        padding: 6px 10px 6px;        
+    }
+    .icone_article{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 40px;
+        right: 16px;
+        padding: 5px;
+        
+    }
+    .icone_article:hover, .icone_article:active{
+        right: 15px;
+        background: #4E0102;
+        background: rgba(0,0,0,0.3);
+    }
+    .icone_article span{
+        background: url("../images/article.png") center no-repeat;
+        display: block;
+        width: 50px;
+        height: 50px;
+    }
+}
 /*---mobile---*/
 @media only screen and (max-width:479px), only screen and (max-device-width: 479px){/*------mobile-----*/
     html{
-        background: url("../images/fond-phone.jpg") top center no-repeat black;
+        background: url("../images/fond-phone.jpg") top center repeat-y black;
     }
-    
     .analyse{
        font-size: 1.2em;
        padding: 0;
@@ -565,7 +649,37 @@ a{
        line-height: 1.6em;
        word-wrap: break-word;
     }
-    
+    .liste{
+        min-height: 25px;
+        padding-right: 80px;
+    }
+    .adresse{
+        height: 11px;
+        overflow: hidden;
+        
+    }
+    .delete{
+        width:30px;
+        height: 30px;
+        font-size: 2em;
+        overflow: hidden;
+        word-wrap: break-word;
+        padding:5px 5px 5px 0;
+    }
+    .icone_article{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        right: 40px;
+        padding: 5px;
+        background: url("../images/article_mobile.png")center no-repeat;
+    }
+    .icone_article:hover, .icone_article:active{
+        background: #4E0102;
+        background:url("../images/article_mobile.png") center no-repeat rgba(0,0,0,0.3);
+        right: 39px;
+    }
     .mobile_cache{
         display:none;
     }

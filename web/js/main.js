@@ -1,20 +1,19 @@
 $(function(){
-	      
+	//suppression d'un article     
         $(".delete").on("click",function(event){
             event.preventDefault();
             var href = $(this).attr("href");
             var $this = $(this);
-            console.log(href);
+            $this.parent().parent().next().remove();
             $.ajax({
                 url:href,
-                success:function(data){
-                    //console.log(data);
-                    $this.parent().parent().text(data).fadeOut(5000); 
+                success:function(data){                    
+                    $this.parent().parent().text(data).fadeOut(4000); 
                 }
             });
         });
         
-        
+        // afficher resultat ou erreur apres recherche
         $('#recherche :submit').on('click',function(){
           $('#chargement').css("display","block");
           if('#resultat'||'#erreur'){
@@ -23,9 +22,20 @@ $(function(){
           }
         });
 	
-        $('#sidebar h1').on('click',function(){
-           $('#sidebar ul').css("display","block");
-           $('#sidebar p').removeClass("icon-down-open").addClass("icon-up-open"); 
+        //developpement article de la liste
+        $('.article_texte').hide();
+        $('.icone_article').on('click',function(){
+            var $article = $(this).parent().parent().next();
+            
+            if($(this).hasClass('ouvert')){
+                $article.hide();
+                $(this).removeClass('ouvert');
+            }
+            else{
+                $article.show();
+                $(this).addClass('ouvert');
+            }
+            //$('#sidebar p').removeClass("icon-down-open").addClass("icon-up-open"); 
         });
         $('#sidebar .icon-down-open').on('click',function(){
            $('#sidebar ul').css("display","none");
@@ -33,7 +43,7 @@ $(function(){
           
         });
         
-        
+        //Galerie choix image
 	var $figs = $('#resultat .resul_image');
 	$figs.not(":first").hide();
         
@@ -68,6 +78,7 @@ $(function(){
                 $input.val($url_image);
         });
         
+        // modifier info resultat
         $("#modifier").on("click",function(){
                 $(".input_texte").css("display","block");
                 $("#resultat label").css("display","block");

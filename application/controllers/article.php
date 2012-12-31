@@ -231,6 +231,7 @@
             $data['ajout_h1'] = $this->input->post('h1');
             $data['ajout_image'] = $this->input->post('image');
             $data['membre_id'] = $this->session->userdata('logged_in')->membre_id;
+            $data['date'] = date("d-m-Y");
             $this->M_Article->enregistrer($data);
             redirect(site_url().'article'); 
         }
@@ -240,7 +241,7 @@
              $id_article = $this->uri->segment(3);
              $this->M_Article->delete($id_article);
             if($this->input->is_ajax_request()){
-                echo "lien supprimé !";
+                echo 'lien supprimé !';
             }
             else{
                 $data['vue'] ="ok";

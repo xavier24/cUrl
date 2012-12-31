@@ -20,7 +20,7 @@
             return $query->num_rows();           
         }
         public function enregistrer($data){
-            $this->db->insert('articles',array('membre_id'=>$data['membre_id'],'url'=>$data['ajout_url'],'title'=>$data['ajout_title'],'texte'=>$data['ajout_meta'],'h1'=>$data['ajout_h1'],'url_image'=>$data['ajout_image']));
+            $this->db->insert('articles',array('membre_id'=>$data['membre_id'],'url'=>$data['ajout_url'],'title'=>$data['ajout_title'],'texte'=>$data['ajout_meta'],'h1'=>$data['ajout_h1'],'url_image'=>$data['ajout_image'],'date'=>$data['date']));
         }
         
         public function delete($id){

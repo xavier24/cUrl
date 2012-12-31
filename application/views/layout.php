@@ -14,10 +14,11 @@
         
         <!-- CSS Fontello -->
         
+        <!--[if lt IE 7]>
         <link rel="stylesheet" href="<?php echo base_url(); ?>web/css/fontello-ie7.css">
+        <![endif]-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>web/css/fontello.css">
         
-        <link rel="stylesheet" href="<?php echo base_url(); ?>web/css/Anormalize.css">
         <link rel="stylesheet" type="text/css" href=" <?php echo base_url(); ?>web/css/reset.css" media="screen" />
         <link rel="stylesheet" type="text/css" href=" <?php echo base_url().DIR_CSS; ?>" media="screen" />
         <script src="<?php echo base_url(); ?>web/js/modernizr-2.6.1.min.js"></script>
@@ -26,8 +27,6 @@
     <body>
 
         <?php echo $vue ?>
-        
-        
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url(); ?>web/js/jquery-1.8.2.min.js"><\/script>')</script>
@@ -41,6 +40,5 @@
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-
     </body>
 </html>

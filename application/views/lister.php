@@ -99,7 +99,7 @@
 <section id="corps">
     
     <section id="articles">
-        <h1 class="entete">Articles</h1>
+        <h1 class="entete">Mes liens</h1>
         <?php if(count($articles)){ ?>
             <?php foreach(array_reverse($articles) as $article):?>
                 <div class="article">

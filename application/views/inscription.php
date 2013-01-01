@@ -30,6 +30,6 @@
         echo form_submit('check" class="connex','Je m\'inscris');
         echo form_close();
     ?>
-        <p><a class="inscription" href="<?php echo site_url(); ?>member">Annuler</a></p>
+        <p><a class="inscription" href="<?php echo site_url(); ?>member" title="Annuler l'inscription, retour à la page de connexion">Annuler</a></p>
               
 </section>

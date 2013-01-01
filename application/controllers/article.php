@@ -143,25 +143,27 @@
                 $data["image"][] = base_url()."/web/images/visuel-non-disponible.png";
                 $nodes = $dom->getElementsByTagName('img');
                 if(count($nodes)){
-                   foreach($nodes as $node){
-                      $image = $node->getAttribute("src");
-                      $url_image = $this->rel2abs($image, $url);
-                      $taille = getimagesize($url_image);
-                      if( ($taille[0]>70 && $taille[1]>10 )||($taille[0]>10 && $taille[1]>70) ){
-                         $data["image"][] = $url_image;
-                      }
-                   }
-                   if( count( $data["image"] ) > 1 ){
-                      array_shift($data["image"]);
-                   }
+                    foreach($nodes as $node){
+                        $image = $node->getAttribute("src");
+                        $url_image = $this->rel2abs($image, $url);
+                        if(preg_match("#(\.png|\.jpg|\.jpeg|\.gif|\.tif|\.png\/|\.jpg\/|\.jpeg\/|\.gif\/|\.tif\/)$#i",$url_image)){
+                            $taille = getimagesize($url_image);
+                            if( ($taille[0]>70 && $taille[1]>10 )||($taille[0]>10 && $taille[1]>70) ){
+                               $data["image"][] = $url_image;
+                            }   
+                        }                      
+                    }
+                    if( count( $data["image"] ) > 1 ){
+                        array_shift($data["image"]);
+                    }
                 }
-           }
-           else{
-               $data["correct"] = false;
-               $data["url"] = $url;
-               $data["message"] = 'n\'existe pas.';
-           }
-           $this->afficher($data);
+            }
+            else{
+                $data["correct"] = false;
+                $data["url"] = $url;
+                $data["message"] = 'n\'existe pas.';
+            }
+            $this->afficher($data);
         }
         
         /*public function analyser($resultat,$url){

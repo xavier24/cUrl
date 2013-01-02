@@ -91,9 +91,11 @@
         <section id="erreur">
             <h1 class="cache">Résultat de la recherche</h1>
             <p>L'adresse "<?php echo $url; ?>"<?php echo $message; ?></p>
-            <?php if(isset($modifier)){ ?>
-            <p class="bouton"><a href="#article_<?php echo $url; ?>" title="vers l'article de l'adresse recherchée">Aller à cet article ?</a></p>
-            <?php } ?>
+            <?php if(isset($modifier)){ 
+                foreach(array_reverse($liens) as $lien):?>
+                    <p class="bouton"><a href="#article_<?php echo $lien->article_id; ?>" title="vers l'article de l'adresse recherchée">Aller à cet article ?</a></p>
+                <?php endforeach; 
+             } ?>
         </section>
     <?php } ?>
 <?php } ?>
@@ -102,13 +104,13 @@
     <?php if(count($articles)){ ?>
         <?php foreach(array_reverse($articles) as $article):?>
             <article class="article">
-                <div class="liste">
+                <div class="liste" id="article_<?php echo $article->article_id; ?>">
                     <p><a class="delete icon-trash" href="<?php echo site_url(); ?>article/delete/<?php echo $article->article_id ?>" title="supprimer l'article">supprimer</a></p>
                     <a href="<?php echo $article->url; ?>" title="aller sur le site <?php echo $article->url; ?>"><p class="icon-globe bouton_article adresse"><?php echo $article->title; ?></p></a>
                     <a href="#article_<?php echo $article->url; ?>" title="afficher l'article"><p class="bouton_article icone_article"><span></span></p></a>
                     <p>Ajouté le <?php echo $article->date; ?></p>
                 </div>
-                <div id="article_<?php echo $article->url; ?>" class="article_texte">
+                <div class="article_texte">
                     <div class="afficher_images">
                         <div class="images">
                             <div>

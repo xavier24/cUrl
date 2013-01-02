@@ -38,28 +38,28 @@ $(function(){
          $('#erreur').hide();
       }
     });
-
+    //aller a l'article si recherche article deja existante
+    $('#erreur .bouton').on('click',function(){
+        var sHref = $(this).find('a').attr("href");
+        sHref = sHref.replace("#","");
+        $('.article_texte').slideUp("normal");
+        $("#"+sHref).next().slideDown("normal");
+    });
+    
     //developpement article de la liste
     $('.article_texte').hide();
     $('.icone_article').on('click',function(){
         var $article = $(this).parent().parent().next();
-
-        if($(this).hasClass('ouvert')){
-            $article.hide();
-            $(this).removeClass('ouvert');
+        
+        if($(this).parent().parent().next(':visible').length != 0){
+            $article.slideUp("normal");
         }
         else{
-            $article.show();
-            $(this).addClass('ouvert');
+            $('.article_texte').slideUp("normal");
+            $article.slideDown("normal");
         }
-        //$('#sidebar p').removeClass("icon-down-open").addClass("icon-up-open"); 
     });
-    $('#sidebar .icon-down-open').on('click',function(){
-       $('#sidebar ul').css("display","none");
-       $('#sidebar p').removeClass("icon-up-open").addClass("icon-down-open");
-
-    });
-
+    
     //Galerie choix image
     var $figs = $('#resultat .resul_image');
     $figs.not(":first").hide();

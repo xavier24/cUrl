@@ -36,6 +36,10 @@
             if(!preg_match('`\/$`i',$url)){
                 $url = $url.'/';
             }
+            if(preg_match('#^(http:\/\/www\.|https:\/\/www\.)#i', $url)){
+                $url = str_replace ( 'http://www.', 'http://', $url);
+                $url = str_replace ( 'https://www.', 'https://', $url);
+            }
             $this->verifier($url);
             
         }
@@ -47,6 +51,7 @@
             if($this->M_Article->verifier($url,$id_membre)){
                 $data["correct"] = false;
                 $data["existe"] = "Deja dans la DB";
+                $data["liens"] = $this->M_Article->id($url,$id_membre);
                 $data["url"] = $url ;
                 $data["message"] = ' se trouve déjà dans votre sélection d\'article.' ;
                 $data["modifier"] = true;
@@ -97,11 +102,19 @@
             curl_close($curl);
                   
             //$this->analyser($resultat,$url);
-           if($resultat){ 
+            if(preg_match('#^(http:\/\/www\.|https:\/\/www\.)#i', $url)){
+                $url = str_replace ( 'http://www.', 'http://', $url);
+                $url = str_replace ( 'https://www.', 'https://', $url);
+            }
+            
+            if(!preg_match('`\/$`i',$url)){
+                $url = $url.'/';
+            }
+            $data["url"] = $url;
+            if($resultat){ 
                 $data["correct"] = true;
                 $dom = new DOMDocument();
                 @$dom->loadHTML($resultat);
-                $data["url"] = $url;
                 $data["title"] = "Ce site n'a communiqué aucun nom";
                 $data["h1"] = "Ce site n'a communiqué aucun titre général";
                 $data["meta"]= "Ce site n'a communiqué aucune description";
@@ -147,7 +160,7 @@
                         $image = $node->getAttribute("src");
                         $url_image = $this->rel2abs($image, $url);
                         if(preg_match("#(\.png|\.jpg|\.jpeg|\.gif|\.tif|\.png\/|\.jpg\/|\.jpeg\/|\.gif\/|\.tif\/)$#i",$url_image)){
-                            $taille = getimagesize($url_image);
+                            $taille = @getimagesize($url_image);
                             if( ($taille[0]>70 && $taille[1]>10 )||($taille[0]>10 && $taille[1]>70) ){
                                $data["image"][] = $url_image;
                             }   
@@ -160,7 +173,6 @@
             }
             else{
                 $data["correct"] = false;
-                $data["url"] = $url;
                 $data["message"] = 'n\'existe pas.';
             }
             $this->afficher($data);

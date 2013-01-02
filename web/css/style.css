@@ -643,6 +643,18 @@ a{
     html{
         background: url("../images/fond-phone.jpg") top center repeat-y black;
     }
+    .entete{
+        font-size:1.4em;
+    }
+    #member form,#inscription form{
+        padding:10px 20px;
+    }
+    #member input,#inscription input{
+        margin-bottom:15px;
+    }
+    .connex{
+        margin-top:0;
+    }
     .analyse{
         font-size: 1.2em;
         padding: 0;
